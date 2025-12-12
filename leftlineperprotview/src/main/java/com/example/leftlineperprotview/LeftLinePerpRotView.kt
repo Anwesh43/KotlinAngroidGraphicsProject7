@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 4
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -41,10 +41,10 @@ fun Canvas.drawLeftLinePerpRot(scale : Float, w : Float, h : Float, paint : Pain
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2) {
-        rotate(-rot * dsc(3))
-        drawXY((-w * 0.5f * (1 - dsc(0)) + dsc(4)), 0f) {
+        drawXY(-w * 0.5f * ((1 - dsc(0)) + dsc(3)), 0f) {
+            rotate(rot * dsc(2))
             drawLine(0f, 0f, -size * (1 - dsc(1)), 0f, paint)
-            drawLine(0f, 0f, 0f, -size * dsc(2), paint)
+            drawLine(0f, 0f, 0f, -size * dsc(1), paint)
         }
     }
 }
