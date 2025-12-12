@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.example.kotlinangroidgraphicsproject7"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.kotlinangroidgraphicsproject7"
@@ -56,4 +56,5 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(project(":leftlineperprotview"))
 }
