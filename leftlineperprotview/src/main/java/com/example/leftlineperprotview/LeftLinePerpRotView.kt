@@ -210,4 +210,13 @@ class LeftLinePerpRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LeftLinePerpRotView {
+            val view : LeftLinePerpRotView = LeftLinePerpRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
