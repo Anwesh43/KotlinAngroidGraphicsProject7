@@ -191,4 +191,27 @@ class LineHalfShiftDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineHalfShiftDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lhsd : LineHalfShiftDown = LineHalfShiftDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lhsd.draw(canvas, paint)
+            animator.animate {
+                lhsd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lhsd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
