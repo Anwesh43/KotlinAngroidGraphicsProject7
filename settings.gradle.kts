@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "KotlinAngroidGraphicsProject7"
 include(":app")
 include(":leftlineperprotview")
+include(":linehalfshiftdownview")
