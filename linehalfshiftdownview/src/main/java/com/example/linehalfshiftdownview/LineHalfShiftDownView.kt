@@ -216,4 +216,12 @@ class LineHalfShiftDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineHalfShiftDownView {
+            val view : LineHalfShiftDownView = LineHalfShiftDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
