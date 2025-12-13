@@ -127,4 +127,46 @@ class LineHalfShiftDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class LHSDNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LHSDNode? = null
+        private var prev : LHSDNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LHSDNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLHSDNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LHSDNode {
+            var curr : LHSDNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+
+    }
 }
