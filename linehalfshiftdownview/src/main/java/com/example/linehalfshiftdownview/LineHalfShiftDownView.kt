@@ -23,3 +23,4 @@ val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 90f
 val sizeFactor : Float = 5.9f
 val strokeFactor : Float = 90f
+
