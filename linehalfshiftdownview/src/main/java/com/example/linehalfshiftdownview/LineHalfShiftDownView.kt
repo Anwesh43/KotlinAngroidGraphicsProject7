@@ -46,9 +46,9 @@ fun Canvas.drawLineHalfShiftDown(scale : Float, w : Float, h : Float, paint : Pa
             drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         }
         val lines : Int = 2
-        val hSize : Float = size / (lines + 1)
+        val hSize : Float = size / (lines)
         for (j in 0..1) {
-           drawXY(0f, -hSize) {
+           drawXY(0f, -hSize - hSize * j) {
                drawLine(0f, 0f, size * dsc(3), 0f, paint)
            }
         }
