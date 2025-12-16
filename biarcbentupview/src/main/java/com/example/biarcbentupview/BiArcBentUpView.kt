@@ -191,4 +191,27 @@ class BiArcBentUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcBentUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val babu : BiArcBentUp = BiArcBentUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            babu.draw(canvas, paint)
+            animator.animate {
+                babu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            babu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
