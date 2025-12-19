@@ -195,4 +195,27 @@ class BiAltArcSweepView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiAltArcSweepView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val baas : BiAltArcSweep = BiAltArcSweep(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            baas.draw(canvas, paint)
+            animator.animate {
+                baas.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            baas.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
