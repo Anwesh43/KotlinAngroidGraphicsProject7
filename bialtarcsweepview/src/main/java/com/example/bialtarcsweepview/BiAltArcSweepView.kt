@@ -220,4 +220,12 @@ class BiAltArcSweepView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BiAltArcSweepView {
+            val view : BiAltArcSweepView = BiAltArcSweepView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
