@@ -46,7 +46,7 @@ fun Canvas.drawConcRotSideRight(scale : Float, w : Float, h : Float, paint : Pai
             val upSize : Float = size / (j + 1)
             drawXY(0f, 0f) {
                 rotate(rot * dsc(2 + j))
-                drawArc(RectF(-upSize, -upSize / 2, 0f, upSize / 2), deg, deg * dsc(j + 1), false, paint)
+                drawArc(RectF(-upSize, -upSize / 2, 0f, upSize / 2), deg, deg * dsc(j), false, paint)
             }
         }
     }
