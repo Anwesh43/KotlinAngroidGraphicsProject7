@@ -208,4 +208,13 @@ class ConcRotSideRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : ConcRotSideRightView {
+            val view : ConcRotSideRightView = ConcRotSideRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
