@@ -136,8 +136,10 @@ class ConcRotSideRightView(ctx : Context) : View(ctx) {
         }
 
         fun addNeighbor() {
-            next = CRSRNode(i + 1)
-            next?.prev = this
+            if (i < colors.size - 1) {
+                next = CRSRNode(i + 1)
+                next?.prev = this
+            }
         }
 
         fun draw(canvas : Canvas, paint : Paint) {
