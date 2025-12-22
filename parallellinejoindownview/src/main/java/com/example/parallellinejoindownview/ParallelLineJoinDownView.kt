@@ -215,4 +215,12 @@ class ParallelLineJoinDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ParallelLineJoinDownView {
+            val view : ParallelLineJoinDownView = ParallelLineJoinDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
