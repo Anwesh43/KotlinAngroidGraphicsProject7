@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/concrotsiderightview" />
             <option value="$PROJECT_DIR$/leftlineperprotview" />
             <option value="$PROJECT_DIR$/linehalfshiftdownview" />
+            <option value="$PROJECT_DIR$/parallellinejoindownview" />
           </set>
         </option>
       </GradleProjectSettings>
