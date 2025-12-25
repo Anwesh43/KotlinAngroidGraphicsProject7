@@ -187,4 +187,27 @@ class LineBentArcRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentArcRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbar : LineBentArcRot = LineBentArcRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbar.draw(canvas, paint)
+            animator.animate {
+                lbar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
