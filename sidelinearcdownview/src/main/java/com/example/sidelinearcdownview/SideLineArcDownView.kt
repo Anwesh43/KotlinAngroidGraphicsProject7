@@ -188,4 +188,27 @@ class SideLineArcDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SideLineArcDownView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val slad : SideLineArcDown = SideLineArcDown(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            slad.draw(canvas, paint)
+            animator.animate {
+                slad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            slad.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
