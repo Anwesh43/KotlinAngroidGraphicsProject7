@@ -8,6 +8,7 @@ import android.graphics.Canvas
 import androidx.core.graphics.toColorInt
 import android.app.Activity
 import android.content.Context
+import android.view.WindowInsets.Side
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
@@ -211,6 +212,15 @@ class SideLineArcDownView(ctx : Context) : View(ctx) {
             slad.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity: Activity) : SideLineArcDownView {
+            val view : SideLineArcDownView = SideLineArcDownView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
