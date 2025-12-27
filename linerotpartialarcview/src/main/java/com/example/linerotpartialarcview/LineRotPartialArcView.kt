@@ -184,4 +184,27 @@ class LineRotPartialArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineRotPartialArcView) {
+
+        private val lrpa : LineRotPartialArc = LineRotPartialArc(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lrpa.draw(canvas, paint)
+            animator.animate {
+                lrpa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lrpa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
