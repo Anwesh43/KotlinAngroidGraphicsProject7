@@ -209,4 +209,12 @@ class LineRotPartialArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineRotPartialArcView {
+            val view : LineRotPartialArcView = LineRotPartialArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
