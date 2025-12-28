@@ -48,7 +48,7 @@ fun Canvas.drawBiQuarterSemiArc(scale : Float, w : Float, h : Float, paint : Pai
         }
         drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 90f, 90f * dsc(0), false, paint)
         drawXY(-size / 2, 0f) {
-            drawLine(0f, 0f, size * 0.5f * dsc(0), 0f, paint)
+            drawLine(0f, 0f, size * 0.5f * dsc(1), 0f, paint)
         }
     }
 }
@@ -87,6 +87,8 @@ class BiQuarterSemiArcView(ctx : Context) : View(ctx) {
             if (Math.abs(scale - prevScale) > 1) {
                 scale = prevScale + dir
                 dir == 0f
+                prevScale = scale
+                cb(prevScale)
             }
         }
 
