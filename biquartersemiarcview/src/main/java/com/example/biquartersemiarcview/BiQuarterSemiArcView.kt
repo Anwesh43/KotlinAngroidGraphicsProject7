@@ -210,4 +210,12 @@ class BiQuarterSemiArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiQuarterSemiArcView {
+            val view : BiQuarterSemiArcView = BiQuarterSemiArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
