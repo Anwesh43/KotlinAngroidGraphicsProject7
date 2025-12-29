@@ -191,4 +191,27 @@ class MirrorIntoSemiCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MirrorIntoSemiCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val misc : MirrorIntoSemiCircle = MirrorIntoSemiCircle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            misc.draw(canvas, paint)
+            animator.animate {
+                misc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            misc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
