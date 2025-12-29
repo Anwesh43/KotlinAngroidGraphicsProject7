@@ -8,6 +8,7 @@ import android.graphics.Canvas
 import androidx.core.graphics.toColorInt
 import android.app.Activity
 import android.content.Context
+import android.util.Log
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
@@ -23,6 +24,7 @@ val sizeFactor : Float = 5.9f
 val rot : Float = 90f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
+val deg : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -41,15 +43,23 @@ fun Canvas.drawMirrorSemiCircle(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
+    Log.d("DSC3", "${dsc(5)} ___ ${scale}")
     drawXY(w / 2, h / 2) {
+        //drawLine(0f, 0f, size * scale, 0f, paint)
         for (j in 0..1) {
-            drawXY(size * j, 0f) {
-                rotate(rot * dsc(4))
+            drawXY(size * 0.5f * j, 0f) {
+                rotate(deg * dsc(4)  * j)
                 drawXY(size * 0.5f * j, 0f) {
-                    drawLine(0f, -size * j * (1 - dsc(2 * j + 1)), 0f, -size * (1 - j) * dsc(j), paint)
-                    drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), -90f + 270f * j, rot * (dsc(j + 1) * (1 - j) + dsc(2 * j) * j), false, paint)
+                    drawLine(0f, -size * j * 0.5f * (1 - dsc(2 * j + 1)), 0f, -size * 0.5f * (1 - j) * dsc(j) - size * j * 0.5f, paint)
+                    drawArc(
+                        RectF(
+                            -size / 2, -size / 2, size / 2, size / 2),
+                        -90f + 270f * j,
+                        rot * (dsc(j + 1) * (1 - j) + dsc(2 * j) * j),
+                        false,
+                        paint
+                    )
                 }
-
             }
         }
     }
@@ -62,7 +72,8 @@ fun Canvas.drawMSCNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h)/ strokeFactor
     paint.style = Paint.Style.STROKE
-    drawMirrorSemiCircle(w, h, scale, paint)
+    Log.d("ANIMATING", "$scale")
+    drawMirrorSemiCircle(scale, w, h, paint)
 }
 
 class MirrorIntoSemiCircleView(ctx : Context) : View(ctx) {
@@ -177,10 +188,12 @@ class MirrorIntoSemiCircleView(ctx : Context) : View(ctx) {
         private var curr : MISCNode = MISCNode(0)
 
         fun draw(canvas : Canvas, paint : Paint) {
+            Log.d("MIRROR_INTO_SEMI_CIRCLE", "drawing")
             curr.draw(canvas, paint)
         }
 
         fun update(cb : (Float) -> Unit) {
+            Log.d("MIRROR_INTO_SEMI_CIRCLE", "update")
             curr.update {
                 curr = curr.getNext(dir) {
                     dir *= -1
@@ -190,6 +203,7 @@ class MirrorIntoSemiCircleView(ctx : Context) : View(ctx) {
         }
 
         fun startUpdating(cb : () -> Unit) {
+            Log.d("MIRROR_INTO_SEMI_CIRCLE", "startUpdating")
             curr.startUpdating(cb)
         }
     }
