@@ -44,7 +44,7 @@ fun Canvas.drawMirrorSemiCircle(scale : Float, w : Float, h : Float, paint : Pai
         scale.divideScale(it, parts)
     }
     Log.d("DSC3", "${dsc(5)} ___ ${scale}")
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(5), h / 2) {
         //drawLine(0f, 0f, size * scale, 0f, paint)
         for (j in 0..1) {
             drawXY(size * 0.5f * j, 0f) {
