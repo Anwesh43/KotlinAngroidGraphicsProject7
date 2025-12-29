@@ -216,4 +216,12 @@ class MirrorIntoSemiCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : MirrorIntoSemiCircleView {
+            val view : MirrorIntoSemiCircleView = MirrorIntoSemiCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
