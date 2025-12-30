@@ -16,8 +16,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.05f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
@@ -43,11 +43,11 @@ fun Canvas.drawBiTirangleEnclose(scale : Float, w : Float, h : Float, paint : Pa
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
             drawXY(size * j, 0f) {
-                rotate(dsc(4) * (2 * j - 1))
-                drawLine(0f, -size * (1 - j) * (1 - dsc(3 * j)), 0f, -size * j * dsc(3 * j), paint)
+                rotate(dsc(4) * (2 * j - 1) * rot)
+                drawLine(0f, -size * (1 - j) * (1 - dsc(3 * j)) * 0.5f, 0f, -size * 0.5f * (j * dsc(3 * j) + (1 - j)), paint)
             }
             drawXY(size * 0.5f * j, -size * 0.5f * j) {
-                drawLine(0f, 0f, size * 0.5f * j, size * 0.5f * (1 - 2 * j), paint)
+                drawLine(0f, 0f, size * 0.5f * dsc(j + 1), -size * 0.5f * (1 - 2 * j) * dsc(j + 1), paint)
             }
         }
     }
