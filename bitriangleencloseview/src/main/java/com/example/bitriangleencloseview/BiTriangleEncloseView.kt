@@ -213,4 +213,13 @@ class BiTriangleEncloseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BiTriangleEncloseView {
+            val view : BiTriangleEncloseView = BiTriangleEncloseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
