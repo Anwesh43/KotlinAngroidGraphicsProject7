@@ -188,4 +188,27 @@ class BiTriangleEncloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiTriangleEncloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bte : BiTriangleEnclose = BiTriangleEnclose(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bte.draw(canvas, paint)
+            animator.animate {
+                bte.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bte.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
