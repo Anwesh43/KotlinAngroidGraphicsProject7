@@ -40,7 +40,7 @@ fun Canvas.drawBiTirangleEnclose(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(5), h / 2) {
         for (j in 0..1) {
             drawXY(size * j, 0f) {
                 rotate(dsc(4) * (2 * j - 1) * rot)
