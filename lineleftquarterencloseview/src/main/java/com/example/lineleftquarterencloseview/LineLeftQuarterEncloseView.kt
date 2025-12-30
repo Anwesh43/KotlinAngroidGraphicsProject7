@@ -212,4 +212,12 @@ class LineLeftQuarterEncloseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineLeftQuarterEncloseView {
+            val view : LineLeftQuarterEncloseView = LineLeftQuarterEncloseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
