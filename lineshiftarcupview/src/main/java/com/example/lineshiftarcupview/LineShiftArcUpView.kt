@@ -215,4 +215,12 @@ class LineShiftArcUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineShiftArcUpView {
+            val view : LineShiftArcUpView = LineShiftArcUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
