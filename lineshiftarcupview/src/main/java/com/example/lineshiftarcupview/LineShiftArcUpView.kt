@@ -101,7 +101,7 @@ class LineShiftArcUpView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun aniamte(cb : () -> Unit) {
+        fun animate(cb : () -> Unit) {
             if (animated) {
                 cb()
                 try {
@@ -188,6 +188,29 @@ class LineShiftArcUpView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineShiftArcUpView) {
+
+        private val lsau : LineShiftArcUp = LineShiftArcUp(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsau.draw(canvas, paint)
+            animator.animate {
+                lsau.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsau.startUpdating {
+                animator.start()
+            }
         }
     }
 }
