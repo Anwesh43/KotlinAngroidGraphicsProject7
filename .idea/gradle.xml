@@ -14,11 +14,14 @@
             <option value="$PROJECT_DIR$/bialtarcsweepview" />
             <option value="$PROJECT_DIR$/biarcbentupview" />
             <option value="$PROJECT_DIR$/biquartersemiarcview" />
+            <option value="$PROJECT_DIR$/bitriangleencloseview" />
             <option value="$PROJECT_DIR$/concrotsiderightview" />
             <option value="$PROJECT_DIR$/leftlineperprotview" />
             <option value="$PROJECT_DIR$/linebentarcrotview" />
             <option value="$PROJECT_DIR$/linehalfshiftdownview" />
+            <option value="$PROJECT_DIR$/lineleftquarterencloseview" />
             <option value="$PROJECT_DIR$/linerotpartialarcview" />
+            <option value="$PROJECT_DIR$/lineshiftarcupview" />
             <option value="$PROJECT_DIR$/mirrorintosemicircleview" />
             <option value="$PROJECT_DIR$/parallellinejoindownview" />
             <option value="$PROJECT_DIR$/sidelinearcdownview" />
