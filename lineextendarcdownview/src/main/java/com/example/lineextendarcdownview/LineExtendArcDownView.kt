@@ -210,4 +210,12 @@ class LineExtendArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineExtendArcDownView {
+            val view : LineExtendArcDownView = LineExtendArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
