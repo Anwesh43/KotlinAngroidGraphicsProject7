@@ -3,6 +3,7 @@ package com.example.lineextendarcdownview
 import android.view.View
 import android.view.MotionEvent
 import android.app.Activity
+import android.content.Context
 import android.graphics.Paint
 import android.graphics.RectF
 import androidx.core.graphics.toColorInt
@@ -62,4 +63,20 @@ fun Canvas.drawLEADNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
     drawLineExtendArcDown(scale, w, h, paint)
+}
+
+class LineExtendArcDownView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent): Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
 }
