@@ -185,4 +185,27 @@ class LineExtendArcDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineExtendArcDownView) {
+
+        private var lead : LineExtendArcDown = LineExtendArcDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lead.draw(canvas, paint)
+            animator.animate {
+                lead.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lead.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
