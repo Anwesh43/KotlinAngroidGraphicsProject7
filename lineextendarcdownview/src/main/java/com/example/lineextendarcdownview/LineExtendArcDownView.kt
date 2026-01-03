@@ -105,8 +105,14 @@ class LineExtendArcDownView(ctx : Context) : View(ctx) {
     data class Animator(var view : View, var animated : Boolean = false) {
 
         fun animate(cb : () -> Unit) {
+            cb()
             if (animated) {
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch(ex : Exception) {
 
+                }
             }
         }
 
