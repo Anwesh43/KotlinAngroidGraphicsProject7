@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 4
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 180f
 val sizeFactor : Float = 5.9f
@@ -40,7 +40,7 @@ fun Canvas.drawLineExtendArcDown(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(3)) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
