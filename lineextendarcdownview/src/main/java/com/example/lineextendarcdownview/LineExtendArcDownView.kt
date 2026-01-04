@@ -18,7 +18,7 @@ val colors : Array<String> = arrayOf(
 )
 val parts : Int = 5
 val scGap : Float = 0.04f / parts
-val strokeFactor : Float = 90f
+val strokeFactor : Float = 180f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
@@ -40,11 +40,10 @@ fun Canvas.drawLineExtendArcDown(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
-                rotate(rot * dsc(3))
                 drawLine(0f, 0f, size * 0.5f * dsc(0), 0f, paint)
                 drawXY(size / 2, 0f) {
                     rotate(rot * dsc(2))
