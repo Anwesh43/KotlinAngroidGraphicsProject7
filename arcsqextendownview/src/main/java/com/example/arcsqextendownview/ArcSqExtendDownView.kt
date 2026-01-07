@@ -42,8 +42,10 @@ fun Canvas.drawArcSqExtendDown(scale : Float, w : Float, h : Float, paint : Pain
     }
     drawXY(w / 2 , h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
+        paint.style = Paint.Style.STROKE
         drawArc(RectF(-size / 2, 0f, size / 2, size), 90f + 180f * dsc(2), 180f * (dsc(0) - dsc(2)), false, paint)
-        drawRect(RectF(0f, -size * 0.2f, size * 0.4f * dsc(1), size * 0.4f), paint)
+        paint.style = Paint.Style.FILL
+        drawRect(RectF(0f, -size * 0.2f, size * 0.4f * dsc(1), size * 0.2f), paint)
     }
 }
 
@@ -53,7 +55,6 @@ fun Canvas.drawASEDNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
-    paint.strokeCap = Paint.Cap.ROUND
     drawArcSqExtendDown(scale, w, h, paint)
 }
 
