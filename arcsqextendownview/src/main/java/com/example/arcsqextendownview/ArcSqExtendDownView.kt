@@ -208,4 +208,13 @@ class ArcSqExtendDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ArcSqExtendDownView {
+            val view : ArcSqExtendDownView = ArcSqExtendDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
