@@ -54,9 +54,14 @@ fun Canvas.drawArcJoinLineDown(scale : Float, w : Float, h : Float, paint : Pain
                         0f,
                         paint
                     )
-                    drawArc(RectF(-size, -size, size, size), 180f * (1 + j) - rot * j, rot * dsc(j * 3),false, paint)
                 }
-
+                drawArc(
+                    RectF(-size, -size, size, size),
+                    180f + rot * j * (1 - dsc(3)),
+                    rot * (dsc(0) * (1 - j) + dsc(3) * j) * (1 - dsc(4)),
+                    false,
+                    paint
+                )
             }
         }
     }
@@ -68,6 +73,7 @@ fun Canvas.drawAJLDNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawArcJoinLineDown(scale, w, h, paint)
 }
 
