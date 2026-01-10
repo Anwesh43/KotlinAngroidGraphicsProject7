@@ -213,4 +213,13 @@ class LineBisectArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineBisectArcJoinView {
+            val view : LineBisectArcJoinView = LineBisectArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
