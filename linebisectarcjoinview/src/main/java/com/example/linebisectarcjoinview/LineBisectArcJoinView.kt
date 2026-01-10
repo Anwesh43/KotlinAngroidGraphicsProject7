@@ -188,4 +188,27 @@ class LineBisectArcJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBisectArcJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbaj : LineBisectArcJoin = LineBisectArcJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbaj.draw(canvas, paint)
+            animator.animate {
+                lbaj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbaj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
