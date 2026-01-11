@@ -188,4 +188,27 @@ class BreakArcJoinRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BreakArcJoinRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bajr : BreakArcJoinRight = BreakArcJoinRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bajr.draw(canvas, paint)
+            animator.animate {
+                bajr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bajr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
