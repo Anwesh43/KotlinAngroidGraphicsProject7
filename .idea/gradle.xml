@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/arcjoinlinedownview" />
             <option value="$PROJECT_DIR$/arcrotateleftlineview" />
             <option value="$PROJECT_DIR$/arcsqextendownview" />
             <option value="$PROJECT_DIR$/bialtarcsweepview" />
@@ -20,6 +21,7 @@
             <option value="$PROJECT_DIR$/concrotsiderightview" />
             <option value="$PROJECT_DIR$/leftlineperprotview" />
             <option value="$PROJECT_DIR$/linebentarcrotview" />
+            <option value="$PROJECT_DIR$/linebisectarcjoinview" />
             <option value="$PROJECT_DIR$/lineextendarcdownview" />
             <option value="$PROJECT_DIR$/lineextendarcrotview" />
             <option value="$PROJECT_DIR$/linehalfshiftdownview" />
