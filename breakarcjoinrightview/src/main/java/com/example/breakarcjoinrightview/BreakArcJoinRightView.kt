@@ -45,7 +45,7 @@ fun Canvas.drawBreakArcJoinRight(scale : Float, w : Float, h : Float, paint : Pa
         rotate(rot * dsc(3))
         drawXY(0f, 0f) {
             rotate(sweep)
-            drawLine(0f, 0f, size * dsc(0), 0f, paint)
+            drawLine(0f, 0f, -size * dsc(0), 0f, paint)
         }
         drawArc(RectF(-size, -size, size, size), 180f + sweep, sweep * dsc(1), false, paint)
         drawLine(0f, -size * (1 - dsc(2)), 0f, -size, paint)
