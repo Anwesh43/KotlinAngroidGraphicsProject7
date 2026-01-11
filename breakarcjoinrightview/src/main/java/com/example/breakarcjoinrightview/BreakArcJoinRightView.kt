@@ -213,4 +213,12 @@ class BreakArcJoinRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BreakArcJoinRightView {
+            val view : BreakArcJoinRightView = BreakArcJoinRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
