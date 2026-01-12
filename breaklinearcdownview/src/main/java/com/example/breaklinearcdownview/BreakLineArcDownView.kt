@@ -41,9 +41,9 @@ fun Canvas.drawBreakLineArcDown(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h * 0.5f * (1 + dsc(3))) {
+    drawXY(w / 2, h / 2 + h * 0.5f * dsc(3)) {
         for (j in 0..1) {
-            drawXY(0f, h * 0.5f * (1 - dsc(0))) {
+            drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
                 rotate(rot * (1f - 2 * j) * dsc(1))
                 drawLine(0f, 0f, 0f, -size / 2, paint)
             }
