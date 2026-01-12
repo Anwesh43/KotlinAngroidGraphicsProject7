@@ -213,4 +213,13 @@ class BreakLineArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BreakLineArcDownView {
+            val view : BreakLineArcDownView = BreakLineArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
