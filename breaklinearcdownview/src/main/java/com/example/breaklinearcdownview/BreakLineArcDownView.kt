@@ -188,4 +188,27 @@ class BreakLineArcDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BreakLineArcDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bald : BreakLineArcDown = BreakLineArcDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bald.draw(canvas, paint)
+            animator.animate {
+                bald.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bald.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
