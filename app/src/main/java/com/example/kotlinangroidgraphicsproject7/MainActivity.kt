@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlinangroidgraphicsproject7.ui.theme.KotlinAngroidGraphicsProject7Theme
-import com.example.parallellinesemicircleview.ParallelLineSemiCircleView
+import com.example.sweeplinearcupview.SweepLineArcUpView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //LineRotPartialArcView.create(this)
-        ParallelLineSemiCircleView.create(this)
+        SweepLineArcUpView.create(this)
     }
 }
