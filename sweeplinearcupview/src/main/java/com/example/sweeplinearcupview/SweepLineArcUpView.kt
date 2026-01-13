@@ -214,4 +214,13 @@ class SweepLineArcUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : SweepLineArcUpView {
+            val view : SweepLineArcUpView = SweepLineArcUpView(activity)
+            activity.setContetnView(view)
+            return view
+        }
+    }
 }
