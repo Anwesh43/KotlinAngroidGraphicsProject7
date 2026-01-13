@@ -125,4 +125,17 @@ class SweepLineArcUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class SLAUNode(var i : Int = 0, val. state : State = State()) {
+
+        private var next : SLAUNode? = prev
+        if (dir === 1) {
+            curr = next
+        }
+        if (curr != null) {
+            return curr
+        }
+        cb()
+        return this
+    }
 }
