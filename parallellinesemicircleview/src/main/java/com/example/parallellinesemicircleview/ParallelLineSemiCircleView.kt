@@ -185,4 +185,27 @@ class ParallelLineSemiCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ParallelLineSemiCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val plsc : ParallelLineSemiCircle = ParallelLineSemiCircle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            plsc.draw(canvas, paint)
+            animator.animate {
+                plsc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            plsc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
