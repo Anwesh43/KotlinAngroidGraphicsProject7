@@ -189,4 +189,27 @@ class SweepLineArcUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SweepLineArcUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val slau : SweepLineArcUp = SweepLineArcUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            slau.draw(canvas, paint)
+            animator.animate {
+                slau.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            slau.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
