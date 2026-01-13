@@ -49,7 +49,7 @@ fun Canvas.drawSweepLineArcUp(scale : Float, w : Float, h : Float, paint : Paint
             rotate(deg * dsc(2))
             drawLine(0f, 0f, 0f, -size * dsc(1), paint)
         }
-        drawArc(RectF(-size, -size, size, size), sweep, sweep * dsc(3), false, paint)
+        drawArc(RectF(-2 * size, -size, 0f, size), 0f, sweep * dsc(3), false, paint)
     }
 }
 
