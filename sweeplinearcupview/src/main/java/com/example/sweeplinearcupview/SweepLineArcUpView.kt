@@ -102,7 +102,7 @@ class SweepLineArcUpView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun animate() {
+        fun animate(cb : () -> Unit) {
             if (animated) {
                 cb()
                 try {
@@ -128,7 +128,7 @@ class SweepLineArcUpView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class SLAUNode(var i : Int = 0, val. state : State = State()) {
+    data class SLAUNode(var i : Int = 0, val state : State = State()) {
 
         private var next : SLAUNode? = null
         private var prev : SLAUNode? = null
@@ -219,7 +219,7 @@ class SweepLineArcUpView(ctx : Context) : View(ctx) {
 
         fun create(activity : Activity) : SweepLineArcUpView {
             val view : SweepLineArcUpView = SweepLineArcUpView(activity)
-            activity.setContetnView(view)
+            activity.setContentView(view)
             return view
         }
     }
