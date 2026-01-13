@@ -22,7 +22,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 135f
+val rot : Float = 180f
 val deg : Float = -180f
 val sweep : Float = 90f
 
