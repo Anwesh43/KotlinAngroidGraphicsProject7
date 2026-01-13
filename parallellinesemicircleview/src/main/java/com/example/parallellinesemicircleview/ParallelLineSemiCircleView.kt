@@ -210,4 +210,12 @@ class ParallelLineSemiCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ParallelLineSemiCircleView {
+            val view : ParallelLineSemiCircleView = ParallelLineSemiCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
