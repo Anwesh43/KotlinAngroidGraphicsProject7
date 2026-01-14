@@ -22,10 +22,10 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 180f
+val rot : Float = 90f
 
 fun Int.inverse() : Float = 1f / this
-fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n)
+fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
 fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
@@ -42,7 +42,7 @@ fun Canvas.drawRotArcCreateLine(scale : Float, w : Float, h : Float, paint : Pai
     }
     drawXY(w / 2 + (w / 2) * dsc(3), h / 2) {
         drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
-            rotate(rot * dsc(0))
+            rotate(rot * dsc(1))
             drawLine(0f, 0f, 0f, -size / 2, paint)
         }
         drawXY(size / 2, 0f) {
