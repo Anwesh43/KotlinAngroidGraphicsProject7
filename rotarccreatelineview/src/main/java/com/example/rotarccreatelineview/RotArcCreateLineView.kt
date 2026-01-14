@@ -46,7 +46,7 @@ fun Canvas.drawRotArcCreateLine(scale : Float, w : Float, h : Float, paint : Pai
             drawLine(0f, 0f, 0f, -size / 2, paint)
         }
         drawXY(size / 2, 0f) {
-            drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(2), false, paint)
+            drawArc(RectF(0f, -size / 4, size / 2, size / 4), 180f, 180f * dsc(2), false, paint)
         }
     }
 }
