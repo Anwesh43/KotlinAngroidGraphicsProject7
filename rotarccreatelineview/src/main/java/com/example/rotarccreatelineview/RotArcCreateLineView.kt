@@ -212,4 +212,12 @@ class RotArcCreateLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RotArcCreateLineView {
+            val view : RotArcCreateLineView = RotArcCreateLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
