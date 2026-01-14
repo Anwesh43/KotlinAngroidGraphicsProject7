@@ -187,4 +187,27 @@ class RotArcCreateLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotArcCreateLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val racl : RotArcCreateLine = RotArcCreateLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            racl.draw(canvas, paint)
+            animator.animate {
+                racl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            racl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
