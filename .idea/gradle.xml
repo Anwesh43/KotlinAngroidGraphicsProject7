@@ -34,6 +34,7 @@
             <option value="$PROJECT_DIR$/parallellinejoindownview" />
             <option value="$PROJECT_DIR$/parallellinesemicircleview" />
             <option value="$PROJECT_DIR$/sidelinearcdownview" />
+            <option value="$PROJECT_DIR$/sweeplinearcupview" />
           </set>
         </option>
       </GradleProjectSettings>
