@@ -187,4 +187,27 @@ class PartialRotArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : PartialRotArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val prar : PartialRotArcRight = PartialRotArcRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            prar.draw(canvas, paint)
+            animator.animate {
+                prar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            prar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
