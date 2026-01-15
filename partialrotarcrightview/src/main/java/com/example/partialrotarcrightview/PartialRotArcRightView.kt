@@ -212,4 +212,12 @@ class PartialRotArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : PartialRotArcRightView {
+            val view : PartialRotArcRightView = PartialRotArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
