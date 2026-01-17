@@ -27,12 +27,14 @@
             <option value="$PROJECT_DIR$/lineextendarcdownview" />
             <option value="$PROJECT_DIR$/lineextendarcrotview" />
             <option value="$PROJECT_DIR$/linehalfshiftdownview" />
+            <option value="$PROJECT_DIR$/linejoinendarcview" />
             <option value="$PROJECT_DIR$/lineleftquarterencloseview" />
             <option value="$PROJECT_DIR$/linerotpartialarcview" />
             <option value="$PROJECT_DIR$/lineshiftarcupview" />
             <option value="$PROJECT_DIR$/mirrorintosemicircleview" />
             <option value="$PROJECT_DIR$/parallellinejoindownview" />
             <option value="$PROJECT_DIR$/parallellinesemicircleview" />
+            <option value="$PROJECT_DIR$/partialrotarcrightview" />
             <option value="$PROJECT_DIR$/rotarccreatelineview" />
             <option value="$PROJECT_DIR$/sidelinearcdownview" />
             <option value="$PROJECT_DIR$/sweeplinearcupview" />
