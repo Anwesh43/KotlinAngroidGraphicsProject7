@@ -188,4 +188,27 @@ class LineJoinEndArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineJoinEndArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ljea : LineJoinEndArc = LineJoinEndArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ljea.draw(canvas, paint)
+            animator.animate {
+                ljea.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ljea.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
