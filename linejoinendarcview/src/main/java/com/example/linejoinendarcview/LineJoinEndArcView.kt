@@ -213,4 +213,12 @@ class LineJoinEndArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineJoinEndArcView {
+            val view : LineJoinEndArcView = LineJoinEndArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
