@@ -190,4 +190,27 @@ class ParallelInterLineJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ParallelInterLineJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val pilj : ParallelInterLineJoin = ParallelInterLineJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            pilj.draw(canvas, paint)
+            animator.animate {
+                pilj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            pilj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
