@@ -215,4 +215,13 @@ class ParallelInterLineJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ParallelInterLineJoinView {
+            val view : ParallelInterLineJoinView = ParallelInterLineJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
