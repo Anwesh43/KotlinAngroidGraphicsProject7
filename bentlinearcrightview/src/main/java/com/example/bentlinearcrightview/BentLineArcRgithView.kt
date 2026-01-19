@@ -213,4 +213,12 @@ class BentLineArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BentLineArcRightView {
+            val view : BentLineArcRightView = BentLineArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
