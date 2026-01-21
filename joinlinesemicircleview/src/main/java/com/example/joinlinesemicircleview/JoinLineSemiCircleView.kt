@@ -217,4 +217,13 @@ class JoinLineSemiCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : JoinLineSemiCircleView {
+            val view : JoinLineSemiCircleView = JoinLineSemiCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
