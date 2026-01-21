@@ -192,4 +192,27 @@ class JoinLineSemiCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : JoinLineSemiCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val jlsc : JoinLineSemiCircle = JoinLineSemiCircle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            jlsc.draw(canvas, paint)
+            animator.animate {
+                jlsc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            jlsc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
