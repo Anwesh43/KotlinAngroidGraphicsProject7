@@ -93,7 +93,7 @@ class JoinLineSemiCircleView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUpdaitng(cb : () -> Unit) {
+        fun startUpdating(cb : () -> Unit) {
             if (dir === 0f) {
                 dir = 1f - 2 * prevScale
                 cb()
@@ -126,6 +126,47 @@ class JoinLineSemiCircleView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class JLSCNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : JLSCNode? = null
+        private var prev : JLSCNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = JLSCNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawJLSCNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : JLSCNode {
+            var curr : JLSCNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
