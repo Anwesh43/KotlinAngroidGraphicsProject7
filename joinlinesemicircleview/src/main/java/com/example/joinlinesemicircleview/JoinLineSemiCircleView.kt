@@ -43,7 +43,7 @@ fun Canvas.drawJoinLineSemiCircle(scale : Float, w : Float, h : Float, paint : P
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(rot * dsc(3))
+                rotate(rot * dsc(3) * j)
                 drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
                     drawLine(0f, 0f, 0f, -size, paint)
                 }
