@@ -8,6 +8,7 @@ import android.graphics.Paint
 import android.graphics.Canvas
 import android.graphics.RectF
 import androidx.core.graphics.toColorInt
+import kotlin.math.acos
 
 val colors : Array<String> = arrayOf(
     "#1A237E",
@@ -209,6 +210,14 @@ class LineArcDropRotView(ctx : Context) : View(ctx) {
             ladr.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+        fun create(activity: Activity) : LineArcDropRotView {
+            val view : LineArcDropRotView = LineArcDropRotView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
