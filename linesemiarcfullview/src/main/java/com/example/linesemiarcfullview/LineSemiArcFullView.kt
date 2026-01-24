@@ -214,4 +214,12 @@ class LineSemiArcFullView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineSemiArcFullView {
+            val view : LineSemiArcFullView = LineSemiArcFullView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
