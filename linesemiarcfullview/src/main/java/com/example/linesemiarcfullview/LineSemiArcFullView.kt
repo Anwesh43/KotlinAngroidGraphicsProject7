@@ -189,4 +189,27 @@ class LineSemiArcFullView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSemiArcFullView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsaf : LineSemiArcFull = LineSemiArcFull(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsaf.draw(canvas, paint)
+            animator.animate {
+                lsaf.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsaf.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
