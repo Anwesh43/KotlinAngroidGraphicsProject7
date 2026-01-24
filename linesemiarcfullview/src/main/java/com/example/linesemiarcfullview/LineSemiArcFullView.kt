@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 6
+val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val rot : Float = 90f
 val sweep : Float = 180f
