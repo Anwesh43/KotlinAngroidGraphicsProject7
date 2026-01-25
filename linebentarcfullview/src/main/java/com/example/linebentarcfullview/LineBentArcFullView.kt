@@ -211,4 +211,12 @@ class LineBentArcFullView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBentArcFullView {
+            val view : LineBentArcFullView = LineBentArcFullView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
