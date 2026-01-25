@@ -173,7 +173,7 @@ class LineBentArcFullView(ctx : Context) : View(ctx) {
             curr.draw(canvas, paint)
         }
 
-        fun update(cb : (Floa) -> Unit) {
+        fun update(cb : (Float) -> Unit) {
             curr.update {
                 curr = curr.getNext(dir) {
                     dir *= -1
@@ -184,6 +184,29 @@ class LineBentArcFullView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineBentArcFullView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbaf : LineBentArcFull = LineBentArcFull(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbaf.draw(canvas, paint)
+            animator.animate {
+                lbaf.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbaf.startUpdating {
+                animator.start()
+            }
         }
     }
 }
