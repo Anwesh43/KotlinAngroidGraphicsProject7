@@ -7,6 +7,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.RectF
 import android.graphics.Canvas
+import android.util.Half
 import androidx.core.graphics.toColorInt
 
 val colors : Array<String> = arrayOf(
@@ -208,6 +209,15 @@ class HalfArcLineJoinView(ctx : Context) : View(ctx) {
             halj.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity: Activity) : HalfArcLineJoinView {
+            val view : HalfArcLineJoinView = HalfArcLineJoinView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
