@@ -94,8 +94,9 @@ class LineCapQuarterArcView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun animate() {
+        fun animate(cb : () -> Unit) {
             if (animated) {
+                cb()
                 try {
                     Thread.sleep(delay)
                     view.invalidate()
@@ -179,6 +180,29 @@ class LineCapQuarterArcView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineCapQuarterArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lcqa : LineCapQuarterArc = LineCapQuarterArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lcqa.draw(canvas, paint)
+            animator.animate {
+                lcqa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lcqa.startUpdating {
+                animator.start()
+            }
         }
     }
 }
