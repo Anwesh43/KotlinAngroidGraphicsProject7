@@ -56,3 +56,19 @@ fun Canvas.drawLCQANode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawLineCapQuarterArc(scale, w, h, paint)
 }
+
+class LineCapQuarterArcView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
