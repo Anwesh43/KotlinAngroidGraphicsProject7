@@ -207,4 +207,13 @@ class LineCapQuarterArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineCapQuarterArcView {
+            val view : LineCapQuarterArcView = LineCapQuarterArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
