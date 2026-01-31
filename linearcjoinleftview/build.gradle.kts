@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.linedividerotdownview"
+    namespace = "com.example.linearcjoinleftview"
     compileSdk = 36
 
     defaultConfig {

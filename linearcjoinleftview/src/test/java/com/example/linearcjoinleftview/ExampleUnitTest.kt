@@ -1,4 +1,4 @@
-package com.example.linedividerotdownview
+package com.example.linearcjoinleftview
 
 import org.junit.Test
 
