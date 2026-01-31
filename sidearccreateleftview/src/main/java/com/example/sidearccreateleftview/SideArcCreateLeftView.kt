@@ -212,4 +212,13 @@ class SideArcCreateLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : SideArcCreateLeftView {
+            val view : SideArcCreateLeftView = SideArcCreateLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
