@@ -164,4 +164,27 @@ class SideArcCreateLeftView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class SideArcCreateLeft(var i : Int) {
+
+        private var dir : Int = 1
+        private var curr : SACLNode = SACLNode(0)
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit ){
+            curr.update {
+                curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
 }
