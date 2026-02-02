@@ -22,7 +22,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 90f
+val rot : Float = 180f
 val deg : Float = 45f
 
 fun Int.inverse() : Float = 1f / this
