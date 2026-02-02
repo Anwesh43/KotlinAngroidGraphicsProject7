@@ -85,7 +85,7 @@ class BreakLineRotUpView(ctx : Context) : View(ctx) {
                 scale = prevScale + dir
                 dir = 0f
                 prevScale = scale
-                cb()
+                cb(prevScale)
             }
         }
 
@@ -122,6 +122,47 @@ class BreakLineRotUpView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class BLRUNode(var i : Int = 0, val state : State = State()) {
+
+        private var prev : BLRUNode? = null
+        private var next : BLRUNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = BLRUNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawBLRUNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : BLRUNode {
+            var curr : BLRUNode? = prev
+            if (dir == 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
