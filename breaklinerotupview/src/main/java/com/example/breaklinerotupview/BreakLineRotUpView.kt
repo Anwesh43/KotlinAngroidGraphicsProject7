@@ -213,4 +213,13 @@ class BreakLineRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BreakLineRotUpView {
+            val view : BreakLineRotUpView = BreakLineRotUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
