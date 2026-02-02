@@ -188,4 +188,27 @@ class BreakLineRotUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BreakLineRotUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private var blru : BreakLineRotUp = BreakLineRotUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blru.draw(canvas, paint)
+            animator.animate {
+                blru.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blru.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
