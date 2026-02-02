@@ -40,7 +40,7 @@ fun Canvas.drawSideArcCreateLeft(scale : Float, w : Float, h : Float, paint : Pa
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
         for (j  in 0..1) {
             drawXY(-size + size * j, 0f) {
                 rotate(rot * j * dsc(3))
@@ -126,7 +126,7 @@ class SideArcCreateLeftView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class SACLNode(var i : Int = 0, val state : State = State()) {
+    data class SACLNode(var i : Int, val state : State = State()) {
 
         private var next : SACLNode? = null
         private var prev : SACLNode? = null
