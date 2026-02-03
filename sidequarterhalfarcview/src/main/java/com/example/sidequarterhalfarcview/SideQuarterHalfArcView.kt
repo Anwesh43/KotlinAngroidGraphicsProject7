@@ -215,4 +215,12 @@ class SideQuarterHalfArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity): SideQuarterHalfArcView {
+            val view : SideQuarterHalfArcView = SideQuarterHalfArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
