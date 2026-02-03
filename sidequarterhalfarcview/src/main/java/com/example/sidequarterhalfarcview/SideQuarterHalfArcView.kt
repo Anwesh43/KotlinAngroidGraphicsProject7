@@ -23,6 +23,7 @@ val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = -90f
+val deg : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -45,12 +46,12 @@ fun Canvas.drawSideQuarterHalfArc(scale : Float, w : Float, h : Float, paint : P
             drawLine(0f, 0f, 0f, size * 0.5f * dsc(0), paint)
         }
         for (j in 0..1) {
-            drawXY(size - size * 0.5f * j, 0f) {
-                rotate(rot * dsc(3) * (1 - j))
-                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 90f, rot * dsc(j + 1), false, paint)
+            drawXY(size - size * j, 0f) {
+                rotate(deg * dsc(3) * (1 - j))
+                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 90f - 90f * j, Math.abs(rot) * dsc(j + 1), false, paint)
             }
         }
-        drawLine(0f, size * (1 - dsc(4)), 0f, size, paint)
+        drawLine(0f, size * 0.5f * (1 - dsc(4)), 0f, size * 0.5f, paint)
     }
 }
 
