@@ -218,4 +218,12 @@ class QuarterLineUpDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : QuarterLineUpDownView {
+            val view : QuarterLineUpDownView = QuarterLineUpDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
