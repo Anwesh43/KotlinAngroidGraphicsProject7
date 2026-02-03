@@ -195,4 +195,27 @@ class QuarterLineUpDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterLineUpDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qlud : QuarterLineUpDown = QuarterLineUpDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qlud.draw(canvas, paint)
+            animator.animate {
+                qlud.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qlud.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
