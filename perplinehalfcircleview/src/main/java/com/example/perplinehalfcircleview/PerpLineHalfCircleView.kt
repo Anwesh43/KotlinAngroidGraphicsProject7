@@ -214,4 +214,12 @@ class PerpLineHalfCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : PerpLineHalfCircleView {
+            val view : PerpLineHalfCircleView = PerpLineHalfCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
