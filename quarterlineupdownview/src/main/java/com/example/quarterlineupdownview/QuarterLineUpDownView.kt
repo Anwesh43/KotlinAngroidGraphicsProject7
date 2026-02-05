@@ -47,7 +47,7 @@ fun Canvas.drawQuarterLineUpDown(scale : Float, w : Float, h : Float, paint : Pa
                 drawLine(0f, 0f, 0f, -size * dsc(j), paint)
             }
         }
-        drawXY((w/ 2) * dsc(3), 0f) {
+        drawXY((w/ 2) * dsc(4), 0f) {
             drawArc(
                 RectF(-size, -size, size, size),
                 -90f,
