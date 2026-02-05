@@ -43,9 +43,9 @@ fun Canvas.drawLinePerpHalfCircle(scale : Float, w : Float, h : Float, paint : P
     drawXY(w / 2, h / 2 + (h / 2 + paint.strokeWidth) * dsc(5)) {
         for (j in 0..1) {
             for (k in 0..1) {
-                drawXY(0f, -h * 0.5f * (1 - dsc(0))) {
-                    rotate(rot * (1f - 2 * j) * k * dsc(2 * j + 1))
-                    drawLine(0f, 0f, 0f, -size, paint)
+                drawXY(0f, h * 0.5f * (1 - dsc(0))) {
+                    rotate(-rot * (1f - 2 * j) * k * dsc(2 * j + 1))
+                    drawLine(0f, 0f, 0f, size, paint)
                 }
             }
         }
