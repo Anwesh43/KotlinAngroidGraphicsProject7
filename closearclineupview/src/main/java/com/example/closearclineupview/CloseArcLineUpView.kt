@@ -127,11 +127,14 @@ class CloseArcLineUpView(ctx : Context) : View(ctx) {
         private var prev : CALUNode? = null
 
         init {
-
+            addNeighbor()
         }
 
         fun addNeighbor() {
-
+            if (i < colors.size - 1) {
+                next = CALUNode(i + 1)
+                next?.prev = this
+            }
         }
 
         fun draw(canvas : Canvas, paint : Paint) {
