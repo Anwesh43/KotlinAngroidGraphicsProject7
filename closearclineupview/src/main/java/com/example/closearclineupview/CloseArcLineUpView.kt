@@ -120,4 +120,42 @@ class CloseArcLineUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class CALUNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : CALUNode? = null
+        private var prev : CALUNode? = null
+
+        init {
+
+        }
+
+        fun addNeighbor() {
+
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawCALUNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : CALUNode {
+            var curr : CALUNode ?= prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
