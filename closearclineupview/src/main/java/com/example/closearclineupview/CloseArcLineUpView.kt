@@ -97,7 +97,7 @@ class CloseArcLineUpView(ctx : Context) : View(ctx) {
 
     data class Animator(var view : View, var animated : Boolean = false) {
 
-        fun aniamte(cb : () -> Unit) {
+        fun animate(cb : () -> Unit) {
             cb()
             try {
                 Thread.sleep(delay)
@@ -182,6 +182,29 @@ class CloseArcLineUpView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : CloseArcLineUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val calu : CloseArcLineUp = CloseArcLineUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            calu.draw(canvas, paint)
+            animator.animate {
+                calu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            calu.startUpdating {
+                animator.start()
+            }
         }
     }
 }
