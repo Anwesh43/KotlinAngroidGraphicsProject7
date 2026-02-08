@@ -209,4 +209,13 @@ class CloseArcLineUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : CloseArcLineUpView {
+            val view : CloseArcLineUpView = CloseArcLineUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
