@@ -23,6 +23,7 @@
             <option value="$PROJECT_DIR$/breakarcjoinrightview" />
             <option value="$PROJECT_DIR$/breaklinearcdownview" />
             <option value="$PROJECT_DIR$/breaklinerotupview" />
+            <option value="$PROJECT_DIR$/closearclineupview" />
             <option value="$PROJECT_DIR$/concrotsiderightview" />
             <option value="$PROJECT_DIR$/halfarclinejoinview" />
             <option value="$PROJECT_DIR$/joinlinesemicircleview" />
@@ -33,6 +34,7 @@
             <option value="$PROJECT_DIR$/linebentarcrotview" />
             <option value="$PROJECT_DIR$/linebisectarcjoinview" />
             <option value="$PROJECT_DIR$/linecapquarterarcview" />
+            <option value="$PROJECT_DIR$/lineenclosequarterarcview" />
             <option value="$PROJECT_DIR$/lineextendarcdownview" />
             <option value="$PROJECT_DIR$/lineextendarcrotview" />
             <option value="$PROJECT_DIR$/linehalfshiftdownview" />
