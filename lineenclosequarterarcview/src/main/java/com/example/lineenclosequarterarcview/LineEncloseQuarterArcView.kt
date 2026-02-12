@@ -210,4 +210,12 @@ class LineEncloseQuarterArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineEncloseQuarterArcView {
+            val view : LineEncloseQuarterArcView = LineEncloseQuarterArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
