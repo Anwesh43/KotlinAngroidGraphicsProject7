@@ -185,4 +185,27 @@ class LineEncloseQuarterArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineEncloseQuarterArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val leqa :  LineEncloseQuarterArc = LineEncloseQuarterArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            leqa.draw(canvas, paint)
+            animator.animate {
+                leqa.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            leqa.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
