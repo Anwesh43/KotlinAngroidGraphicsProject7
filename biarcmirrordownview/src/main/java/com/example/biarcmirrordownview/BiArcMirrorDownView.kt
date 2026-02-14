@@ -189,4 +189,27 @@ class BiArcMirrorDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcMirrorDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bamd : BiArcMirrorDown = BiArcMirrorDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bamd.draw(canvas, paint)
+            animator.animate {
+                bamd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bamd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
