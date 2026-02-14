@@ -214,4 +214,13 @@ class BiArcMirrorDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BiArcMirrorDownView {
+            val view : BiArcMirrorDownView = BiArcMirrorDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
