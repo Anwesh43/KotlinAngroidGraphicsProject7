@@ -45,7 +45,7 @@ fun Canvas.drawBiArcMirrorDown(scale : Float, w : Float, h : Float, paint : Pain
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
-                drawXY((w / 2) * (1 - dsc(1)), 0f) {
+                drawXY(-(w / 4) * (1 - dsc(1)), 0f) {
                     drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f, 90f * dsc(0), false, paint)
                 }
             }
