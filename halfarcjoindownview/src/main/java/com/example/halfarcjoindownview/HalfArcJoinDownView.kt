@@ -101,7 +101,8 @@ class HalfArcJoinDownView(ctx : Context) : View(ctx) {
             if (animated) {
                 cb()
                 try {
-
+                    Thread.sleep(delay)
+                    view.invalidate()
                 } catch(ex : Exception) {
 
                 }
