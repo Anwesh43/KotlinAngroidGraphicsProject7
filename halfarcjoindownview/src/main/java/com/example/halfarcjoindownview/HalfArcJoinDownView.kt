@@ -183,4 +183,27 @@ class HalfArcJoinDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : HalfArcJoinDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val hajd : HalfArcJoinDown = HalfArcJoinDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            hajd.draw(canvas, paint)
+            animator.animate {
+                hajd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hajd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
