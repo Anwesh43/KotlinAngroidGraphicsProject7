@@ -150,7 +150,7 @@ class DownLineRightArcView(ctx : Context) : View(ctx) {
             state.startUpdating(cb)
         }
 
-        fun getNet(dir : Int, cb : () -> Unit) : DLRANode {
+        fun getNext(dir : Int, cb : () -> Unit) : DLRANode {
             var curr : DLRANode? = prev
             if (dir === 1) {
                 curr = next
@@ -160,6 +160,29 @@ class DownLineRightArcView(ctx : Context) : View(ctx) {
             }
             cb()
             return this
+        }
+    }
+
+    data class DownLineRightArc(var i : Int) {
+
+        private var curr : DLRANode = DLRANode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
         }
     }
 }
