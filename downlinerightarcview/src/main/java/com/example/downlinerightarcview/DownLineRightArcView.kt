@@ -185,4 +185,27 @@ class DownLineRightArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : DownLineRightArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val dlra : DownLineRightArc = DownLineRightArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            dlra.draw(canvas, paint)
+            animator.animate {
+                dlra.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            dlra.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
