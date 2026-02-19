@@ -210,4 +210,13 @@ class DownLineRightArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : DownLineRightArcView {
+            val view : DownLineRightArcView = DownLineRightArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
