@@ -11,13 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.downlinerightarcview.DownLineRightArcView
 import com.example.kotlinangroidgraphicsproject7.ui.theme.KotlinAngroidGraphicsProject7Theme
+import com.example.quarterarclinehalfview.QuarterArcLineHalfView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //LineRotPartialArcView.create(this)
-        DownLineRightArcView.create(this)
+        QuarterArcLineHalfView.create(this)
     }
 }
