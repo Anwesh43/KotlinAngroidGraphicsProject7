@@ -187,4 +187,27 @@ class QuarterArcLineHalfView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterArcLineHalfView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qalh : QuarterArcLineHalf = QuarterArcLineHalf(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qalh.draw(canvas, paint)
+            animator.animate {
+                qalh.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qalh.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
