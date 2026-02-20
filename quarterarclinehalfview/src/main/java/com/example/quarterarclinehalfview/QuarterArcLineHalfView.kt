@@ -42,10 +42,13 @@ fun Canvas.drawQuarterArcLineHalf(scale : Float, w : Float, h : Float, paint : P
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         for (j in 0..1) {
-            drawXY((w / 4) * (1 - dsc(2)), 0f) {
-                rotate(rot * dsc(3))
-                drawLine(0f, 0f, 0f, -size * dsc(0), paint)
-                drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f, rot * dsc(1), false, paint)
+            drawXY(0f, 0f) {
+                scale(1f - 2 * j, 1f)
+                drawXY((w / 4) * (1 - dsc(2)), 0f) {
+                    rotate(rot * dsc(3))
+                    drawLine(0f, 0f, 0f, -size * dsc(0), paint)
+                    drawArc(RectF(-size, -size, size, size), -90f, rot * dsc(1), false, paint)
+                }
             }
         }
     }
