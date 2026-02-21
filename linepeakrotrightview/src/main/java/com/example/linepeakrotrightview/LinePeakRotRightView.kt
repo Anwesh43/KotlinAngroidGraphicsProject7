@@ -186,4 +186,27 @@ class LinePeakRotRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LinePeakRotRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lprr : LinePeakRotRight = LinePeakRotRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lprr.draw(canvas, paint)
+            animator.animate {
+                lprr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handelTap() {
+            lprr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
