@@ -186,4 +186,27 @@ class QuarterArcHalfDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterArcHalfDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qahd : QuarterArcHalfDown = QuarterArcHalfDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qahd.draw(canvas, paint)
+            animator.animate {
+                qahd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qahd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
