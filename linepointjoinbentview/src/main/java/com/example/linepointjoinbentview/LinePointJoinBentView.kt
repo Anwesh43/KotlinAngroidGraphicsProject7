@@ -187,4 +187,27 @@ class LinePointJoinBentView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LinePointJoinBentView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lpjb : LinePointJoinBent = LinePointJoinBent(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lpjb.draw(canvas, paint)
+            animator.animate {
+                lpjb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lpjb.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
