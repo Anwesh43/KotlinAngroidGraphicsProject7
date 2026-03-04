@@ -50,7 +50,7 @@ fun Canvas.drawLineRotHalfArc(scale : Float, w : Float, h : Float, paint : Paint
                 drawArc(
                     RectF(-size / 2, -size, size / 2, 0f),
                     -90f,
-                    rot * dsc(2).divideScale(j, 2),
+                    sweep * dsc(2).divideScale(j, 2),
                     false,
                     paint
                 )
@@ -71,14 +71,16 @@ fun Canvas.drawLRHANode(i : Int, scale : Float, paint : Paint) {
 
 class LineRotHalfArcView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
