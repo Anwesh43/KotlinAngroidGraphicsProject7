@@ -16,14 +16,15 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 6
 val rot : Float = 90f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
-val scGap : Float = 0.04f / parts
+val scGap : Float = 0.05f / parts
 val deg : Float = 270f
+val mainRot : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -41,7 +42,8 @@ fun Canvas.drawLineArcLineRot(scale : Float, w : Float, h : Float, paint : Paint
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
+    drawXY(w / 2 - (w / 2) * dsc(5), h / 2) {
+        rotate(mainRot * dsc(4))
         drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         drawXY(size, 0f) {
             rotate(deg * dsc(3))
