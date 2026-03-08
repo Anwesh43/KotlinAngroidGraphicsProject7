@@ -213,4 +213,13 @@ class ConcArcSemiSeparateView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ConcArcSemiSeparateView {
+            val view : ConcArcSemiSeparateView = ConcArcSemiSeparateView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
