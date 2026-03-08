@@ -168,7 +168,7 @@ class ConcArcSemiSeparateView(ctx : Context) : View(ctx) {
 
     data class ConcArcSemiSeparate(var i : Int) {
 
-        private val curr : CASSNode = CASSNode(0)
+        private var curr : CASSNode = CASSNode(0)
         private var dir : Int = 1
 
         fun draw(canvas : Canvas, paint : Paint) {
@@ -186,6 +186,29 @@ class ConcArcSemiSeparateView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : ConcArcSemiSeparateView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val cass : ConcArcSemiSeparate = ConcArcSemiSeparate(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            cass.draw(canvas, paint)
+            animator.animate {
+                cass.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            cass.startUpdating {
+                animator.start()
+            }
         }
     }
 }
