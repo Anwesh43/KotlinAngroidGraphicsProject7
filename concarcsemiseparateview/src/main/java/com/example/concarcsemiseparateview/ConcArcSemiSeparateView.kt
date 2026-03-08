@@ -44,9 +44,17 @@ fun Canvas.drawConcArcSemiSeparate(scale : Float, w : Float, h : Float, paint : 
     drawXY(w / 2, h / 2) {
         rotate(deg * dsc(3))
         for (j in 0..1) {
-            drawXY(size * 0.5f * j, -w * 0.5f * (1 - 2 * j) * dsc(4)) {
+            drawXY( size * j, (-w * 0.5f * (1 - 2 * j)) * dsc(4)) {
                 rotate(rot * dsc(2) * j)
-                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), -90f, 90f * dsc(j), false, paint)
+                drawXY(size * j, 0f) {
+                    drawArc(
+                        RectF(-size, -size, size, size),
+                        -90f - 90f * j,
+                        90f * dsc(j),
+                        false,
+                        paint
+                    )
+                }
             }
         }
     }
