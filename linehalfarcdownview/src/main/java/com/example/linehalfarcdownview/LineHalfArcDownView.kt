@@ -28,3 +28,36 @@ val deg : Float = -180f
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawLineHalfArcDown(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
+        rotate(deg * dsc(4))
+        drawXY(size * (1 - dsc(3)), 0f) {
+            drawXY(0f, 0f) {
+                rotate(rot * dsc(2))
+                drawLine(-size, 0f, -size * (1f - dsc(0)), 0f, paint)
+            }
+            drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(1), false, paint)
+        }
+    }
+}
+
+fun Canvas.drawLHADNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    drawLineHalfArcDown(scale, w, h, paint)
+}
