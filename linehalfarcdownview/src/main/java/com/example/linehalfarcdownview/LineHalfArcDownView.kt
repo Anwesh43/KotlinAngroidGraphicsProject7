@@ -213,4 +213,12 @@ class LineHalfArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineHalfArcDownView {
+            val view : LineHalfArcDownView = LineHalfArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
