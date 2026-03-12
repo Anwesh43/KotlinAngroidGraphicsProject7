@@ -18,7 +18,7 @@ val colors : Array<String> = arrayOf(
 val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
-val rot : Float = 5.9f
+val rot : Float = 90f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val sizeFactor : Float = 5.9f
@@ -43,7 +43,7 @@ fun Canvas.drawLinePerpDownRight(scale : Float, w : Float, h : Float, paint : Pa
         rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(size * j, -h * 0.5f * (1 - dsc(j * 2))) {
-                rotate(rot * dsc(1))
+                rotate(rot * dsc(1) * (1 - j))
                 drawLine(0f, 0f, 0f, -size, paint)
             }
         }
