@@ -59,6 +59,7 @@ fun Canvas.drawLHADNode(i : Int, scale : Float, paint : Paint) {
     paint.color = colors[i].toColorInt()
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
     drawLineHalfArcDown(scale, w, h, paint)
 }
 
@@ -103,7 +104,7 @@ class LineHalfArcDownView(ctx : Context) : View(ctx) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
-                view.postInvalidate()
+                cb()
                 try {
                     Thread.sleep(delay)
                     view.invalidate()
