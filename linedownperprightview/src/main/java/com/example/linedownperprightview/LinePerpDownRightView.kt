@@ -198,7 +198,7 @@ class LinePerpDownRightView(ctx : Context) : View(ctx) {
             canvas.drawColor(backColor)
             lpdr.draw(canvas, paint)
             animator.animate {
-                lpdr.startUpdating {
+                lpdr.update {
                     animator.stop()
                 }
             }
