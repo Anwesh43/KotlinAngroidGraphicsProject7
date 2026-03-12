@@ -185,4 +185,26 @@ class LinePerpDownRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LinePerpDownRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val lpdr : LinePerpDownRight = LinePerpDownRight(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            lpdr.draw(canvas, paint)
+            animator.animate {
+                lpdr.startUpdating {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lpdr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
