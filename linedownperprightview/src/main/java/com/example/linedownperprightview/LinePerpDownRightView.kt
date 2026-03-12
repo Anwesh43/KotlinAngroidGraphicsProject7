@@ -210,4 +210,12 @@ class LinePerpDownRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LinePerpDownRightView {
+            val view : LinePerpDownRightView = LinePerpDownRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
