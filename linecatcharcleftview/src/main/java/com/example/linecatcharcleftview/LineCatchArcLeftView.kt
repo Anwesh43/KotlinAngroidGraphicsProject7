@@ -36,7 +36,7 @@ fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
 }
 
 fun Canvas.drawLineCatchArcLeft(scale : Float, w : Float, h : Float, paint : Paint) {
-    val size : Float = width.toFloat()
+    val size : Float = Math.min(w, h) / sizeFactor
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
@@ -45,7 +45,8 @@ fun Canvas.drawLineCatchArcLeft(scale : Float, w : Float, h : Float, paint : Pai
             drawLine(0f, 0f, -size * dsc(0), 0f, paint)
         }
         drawXY(w * 0.25f * (1 - dsc(1)), 0f) {
-            drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(2), false, paint)
+            rotate(rot * dsc(2))
+            drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(0), false, paint)
         }
     }
 }
@@ -57,6 +58,7 @@ fun Canvas.drawLCALNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeCap = Paint.Cap.ROUND
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
+    drawLineCatchArcLeft(scale, w, h, paint)
 }
 
 class LineCatchArcLeftView(ctx : Context) : View(ctx) {
