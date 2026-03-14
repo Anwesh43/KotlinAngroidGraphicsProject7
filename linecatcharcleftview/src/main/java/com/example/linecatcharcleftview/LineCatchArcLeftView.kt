@@ -210,4 +210,12 @@ class LineCatchArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineCatchArcLeftView {
+            val view : LineCatchArcLeftView = LineCatchArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
