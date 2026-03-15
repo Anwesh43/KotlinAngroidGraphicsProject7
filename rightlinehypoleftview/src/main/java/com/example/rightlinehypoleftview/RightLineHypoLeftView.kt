@@ -156,4 +156,46 @@ class RightLineHypoLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class RLHLNode(var i : Int = 0) {
+
+        private var next : RLHLNode? = null
+        private var prev : RLHLNode? = null
+        private val state : State = State()
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = RLHLNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawRLHLNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : RLHLNode {
+            var curr : RLHLNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
