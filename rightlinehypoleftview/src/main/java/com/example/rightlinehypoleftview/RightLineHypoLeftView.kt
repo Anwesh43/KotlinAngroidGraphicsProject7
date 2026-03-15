@@ -5,7 +5,6 @@ import android.view.MotionEvent
 import android.content.Context
 import android.app.Activity
 import android.graphics.Paint
-import android.graphics.RectF
 import android.graphics.Canvas
 import androidx.core.graphics.toColorInt
 
@@ -22,7 +21,7 @@ val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
-val rot : Float = 135f
+val rot : Float = 225f
 val deg : Float = 90f
 val totalLines = 2
 
@@ -31,6 +30,7 @@ fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
 val rots : Array<Float> = arrayOf(0f, 0f, rot)
+val sizeFactors : Array<Float> = arrayOf(1f, 1f, Math.sqrt(2.0).toFloat())
 
 fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
     save()
@@ -57,12 +57,13 @@ data class Line(var lineNumber : Int, var ix : Float, var iy : Float) {
     }
 
     fun draw(canvas : Canvas, size : Float, sc : Float, paint : Paint) {
+        val uSize : Float = size * sizeFactors[lineNumber]
         val dci : (Int) -> Float = {
             sc.divideScale(it, parts)
         }
         canvas.drawXY(0f, 0f) {
-            canvas.rotate(rot * dci(lineNumber + 1))
-            canvas.drawLine(0f, 0f, size * ix * dci(lineNumber), size * iy * dci(lineNumber), paint)
+            canvas.rotate(rots[lineNumber] * dci(lineNumber + 1))
+            canvas.drawLine(0f, 0f, uSize * ix * dci(lineNumber), uSize * iy * dci(lineNumber), paint)
             canvas.drawXY(size * ix, size * iy) {
                 next?.draw(canvas, size, sc, paint)
             }
@@ -137,11 +138,14 @@ class RightLineHypoLeftView(ctx : Context) : View(ctx) {
     data class Animator(var view : View, var animated : Boolean = false) {
 
         fun animate(cb : () -> Unit) {
-            try {
-                Thread.sleep(delay)
-                view.invalidate()
-            } catch(ex : Exception) {
+            if (animated) {
+                cb()
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch (ex: Exception) {
 
+                }
             }
         }
 
