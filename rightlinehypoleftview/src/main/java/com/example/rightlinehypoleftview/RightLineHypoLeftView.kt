@@ -221,4 +221,27 @@ class RightLineHypoLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightLineHypoLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val rlhl : RightLineHypoLeft = RightLineHypoLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rlhl.draw(canvas, paint)
+            animator.animate {
+                rlhl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rlhl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
