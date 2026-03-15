@@ -82,9 +82,7 @@ fun Canvas.drawRightLineHypoLeft(scale : Float, w : Float, h : Float, paint : Pa
     }
     drawXY(w / 2 - (w / 2) * dsc(5), h / 2) {
         rotate(deg * dsc(4))
-        drawXY(size, 0f) {
-            rootLine.draw(this, size, scale, paint)
-        }
+        rootLine.draw(this, size, scale, paint)
     }
 }
 
