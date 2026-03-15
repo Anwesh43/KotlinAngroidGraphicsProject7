@@ -246,4 +246,12 @@ class RightLineHypoLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RightLineHypoLeftView {
+            val view : RightLineHypoLeftView = RightLineHypoLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
