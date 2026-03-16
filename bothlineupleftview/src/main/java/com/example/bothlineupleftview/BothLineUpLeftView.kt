@@ -186,4 +186,27 @@ class BothLineUpLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BothLineUpLeftView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blul : BothLineUpLeft = BothLineUpLeft(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blul.draw(canvas, paint)
+            animator.animate {
+                blul.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blul.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
