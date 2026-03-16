@@ -43,7 +43,7 @@ fun Canvas.drawBothLineUpLeft(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2, h /2) {
         for (j in 0..1) {
             drawXY((w / 2) * j * (1 - dsc(3 * j)), -(h / 2) * (1 - j) * (1 - dsc(3 * j)) + (h / 2) * dsc(3 * j + 2)) {
-                rotate(rot * dsc(3 * j + 1))
+                rotate(rot * dsc(3 * j + 1) * (2f - j))
                 drawLine(0f, 0f, size * j, -size * (1 - j), paint)
             }
         }
