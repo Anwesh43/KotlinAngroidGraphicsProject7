@@ -211,4 +211,12 @@ class BothLineUpLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BothLineUpLeftView {
+            val view : BothLineUpLeftView = BothLineUpLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
