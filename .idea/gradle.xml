@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/biarcmirrordownview" />
             <option value="$PROJECT_DIR$/biquartersemiarcview" />
             <option value="$PROJECT_DIR$/bitriangleencloseview" />
+            <option value="$PROJECT_DIR$/bothlineupleftview" />
             <option value="$PROJECT_DIR$/breakarcjoinrightview" />
             <option value="$PROJECT_DIR$/breaklinearcdownview" />
             <option value="$PROJECT_DIR$/breaklinerotupview" />
@@ -64,6 +65,7 @@
             <option value="$PROJECT_DIR$/quarterarcjoinhalfview" />
             <option value="$PROJECT_DIR$/quarterarclinehalfview" />
             <option value="$PROJECT_DIR$/quarterlineupdownview" />
+            <option value="$PROJECT_DIR$/rightlinehypoleftview" />
             <option value="$PROJECT_DIR$/rotarccreatelineview" />
             <option value="$PROJECT_DIR$/sidearccreateleftview" />
             <option value="$PROJECT_DIR$/sidelinearcdownview" />
