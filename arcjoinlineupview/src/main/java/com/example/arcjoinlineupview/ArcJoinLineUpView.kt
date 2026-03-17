@@ -184,4 +184,27 @@ class ArcJoinLineUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcJoinLineUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ajlu : ArcJoinLineup = ArcJoinLineup(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ajlu.draw(canvas, paint)
+            animator.animate {
+                ajlu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ajlu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
