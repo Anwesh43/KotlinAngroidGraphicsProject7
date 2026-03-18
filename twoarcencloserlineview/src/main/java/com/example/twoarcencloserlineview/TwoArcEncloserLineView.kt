@@ -214,4 +214,13 @@ class TwoArcEncloserLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : TwoArcEncloserLineView {
+            val view : TwoArcEncloserLineView = TwoArcEncloserLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
