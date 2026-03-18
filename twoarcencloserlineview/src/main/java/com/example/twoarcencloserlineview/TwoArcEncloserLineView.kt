@@ -189,4 +189,27 @@ class TwoArcEncloserLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TwoArcEncloserLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val tael : TwoArcEncloserLine = TwoArcEncloserLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tael.draw(canvas, paint)
+            animator.animate {
+                tael.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tael.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
