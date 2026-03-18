@@ -116,7 +116,7 @@ class TwoArcEncloserLineView(ctx : Context) : View(ctx) {
 
         fun start() {
             if (!animated) {
-                animated = false
+                animated = true
                 view.postInvalidate()
             }
         }
