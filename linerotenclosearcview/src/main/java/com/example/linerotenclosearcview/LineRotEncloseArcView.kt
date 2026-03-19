@@ -42,9 +42,9 @@ fun Canvas.drawLineRotEncloseArc(scale : Float, w : Float, h : Float, paint : Pa
     }
     drawXY(w / 2 + (w / 2) * dsc(3),  h / 2) {
         for (j in 0..1) {
-            drawXY(0f, -h * 0.5f * (1 - dsc(1))) {
+            drawXY(0f, h * 0.5f * (1 - dsc(1))) {
                 rotate(rot * (j + 1) * (2 * j - 1) * dsc(2))
-                drawLine(0f, 0f, size, 0f, paint)
+                drawLine(0f, 0f, 0f, size, paint)
             }
         }
         drawArc(RectF(-size, -size, size, size), -90f, 90f * dsc(0), false, paint)
