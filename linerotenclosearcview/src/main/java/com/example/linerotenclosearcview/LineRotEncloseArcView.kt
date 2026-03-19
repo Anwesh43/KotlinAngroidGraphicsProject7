@@ -212,4 +212,13 @@ class LineRotEncloseArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineRotEncloseArcView {
+            val view : LineRotEncloseArcView = LineRotEncloseArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
