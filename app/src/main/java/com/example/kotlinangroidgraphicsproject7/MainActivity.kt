@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlinangroidgraphicsproject7.ui.theme.KotlinAngroidGraphicsProject7Theme
-import com.example.linerotenclosearcview.LineRotEncloseArcView
+import com.example.parallellinejoinarcview.ParallelLineJoinArcView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //LineRotPartialArcView.create(this)
-        LineRotEncloseArcView.create(this)
+        ParallelLineJoinArcView.create(this)
     }
 }
