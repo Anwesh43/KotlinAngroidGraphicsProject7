@@ -212,5 +212,13 @@ class ParallelLineJoinArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ParallelLineJoinArcView {
+            val view : ParallelLineJoinArcView = ParallelLineJoinArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
 
