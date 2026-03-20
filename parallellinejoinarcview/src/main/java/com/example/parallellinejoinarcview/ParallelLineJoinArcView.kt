@@ -187,5 +187,28 @@ class ParallelLineJoinArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ParallelLineJoinArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val plja : ParallelLineJoinArc = ParallelLineJoinArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            plja.draw(canvas, paint)
+            animator.animate {
+                plja.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            plja.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
 
