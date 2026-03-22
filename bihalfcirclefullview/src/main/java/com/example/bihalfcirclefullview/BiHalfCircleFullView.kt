@@ -187,4 +187,27 @@ class BiHalfCircleFullView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiHalfCircleFullView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bhcf : BiHalfCircleFull = BiHalfCircleFull(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bhcf.draw(canvas, paint)
+            animator.animate {
+                bhcf.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bhcf.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
