@@ -212,4 +212,13 @@ class BiHalfCircleFullView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BiHalfCircleFullView {
+            val view : BiHalfCircleFullView = BiHalfCircleFullView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
