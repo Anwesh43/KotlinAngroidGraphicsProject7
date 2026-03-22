@@ -40,7 +40,7 @@ fun Canvas.drawBiHalfCircleFull(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 - h * dsc(3)) {
+    drawXY(w / 2, h *0.5f  * (1 - dsc(3))) {
         for (j in 0..1) {
             drawXY(0f, -w * 0.25f * (1 - dsc(1)) * (1f - 2 * j)) {
                 rotate(rot * dsc(2) * j)
