@@ -96,7 +96,7 @@ class LinePerpJoinRotView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Animaator(var view : View, var animated : Boolean = false) {
+    data class Animator(var view : View, var animated : Boolean = false) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
@@ -185,6 +185,29 @@ class LinePerpJoinRotView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LinePerpJoinRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lpjr : LinePerpJoinRot = LinePerpJoinRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lpjr.draw(canvas, paint)
+            animator.animate {
+                lpjr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lpjr.startUpdating {
+                animator.start()
+            }
         }
     }
 }
