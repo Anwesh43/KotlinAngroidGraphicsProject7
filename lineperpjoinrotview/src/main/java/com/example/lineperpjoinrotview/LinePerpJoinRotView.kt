@@ -212,4 +212,12 @@ class LinePerpJoinRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LinePerpJoinRotView {
+            val view : LinePerpJoinRotView = LinePerpJoinRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
