@@ -191,4 +191,27 @@ class BiLinePerpDownView(ctx : Context) : View(ctx) {
             blpd.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLinePerpDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val blpd : BiLinePerpDown = BiLinePerpDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blpd.draw(canvas, paint)
+            animator.animate {
+                blpd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blpd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
