@@ -41,7 +41,7 @@ fun Canvas.drawBiLinePerpDown(scale : Float, w : Float, h : Float, paint : Paint
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
-        rotate(rot * dsc(3))
+        rotate(-rot * dsc(3))
         for (j in 0..1) {
             drawXY(-w * 0.25f * (1 - dsc(2)), 0f) {
                 scale(1f, 1f - 2 * j)
