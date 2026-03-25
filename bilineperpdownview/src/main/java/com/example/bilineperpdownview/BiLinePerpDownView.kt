@@ -168,4 +168,27 @@ class BiLinePerpDownView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class BiLinePerpDown(var i : Int) {
+
+        private var blpd : BLPDNode = BLPDNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            blpd.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            blpd.update {
+                blpd = blpd.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            blpd.startUpdating(cb)
+        }
+    }
 }
