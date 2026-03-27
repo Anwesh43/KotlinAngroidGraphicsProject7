@@ -20,7 +20,7 @@ val parts : Int = 6
 val scGap : Float = 0.05f / parts
 val rot : Float = 180f
 val sizeFactor : Float = 5.9f
-val strokeFactor : Float = 180f
+val strokeFactor : Float = 90f
 val backColor : Int = "#BDBDBD".toColorInt()
 val delay : Long = 20
 
