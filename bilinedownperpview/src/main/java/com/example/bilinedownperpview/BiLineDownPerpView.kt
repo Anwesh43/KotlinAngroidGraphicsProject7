@@ -18,7 +18,7 @@ val colors : Array<String> = arrayOf(
 )
 val parts : Int = 6
 val scGap : Float = 0.05f / parts
-val rot : Float = 90f
+val rot : Float = 180f
 val sizeFactor : Float = 5.9f
 val strokeFactor : Float = 180f
 val backColor : Int = "#BDBDBD".toColorInt()
@@ -44,7 +44,7 @@ fun Canvas.drawBiLineDownPerp(scale : Float, w : Float, h : Float, paint : Paint
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
-                drawXY(-w / 2, h * 0.5f * (-(1 - dsc(3 * j)) + dsc(3 * j + 2))) {
+                drawXY(-w / 4, h * 0.5f * (-(1 - dsc(3 * j)) + dsc(3 * j + 2))) {
                     rotate(rot * dsc(3 * j + 1))
                     drawLine(0f, 0f, 0f, -size, paint)
                 }
