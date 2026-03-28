@@ -187,4 +187,27 @@ class LineRotPartDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineRotPartDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lrpd : LineRotPartDown = LineRotPartDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lrpd.draw(canvas, paint)
+            animator.animate {
+                lrpd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lrpd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
