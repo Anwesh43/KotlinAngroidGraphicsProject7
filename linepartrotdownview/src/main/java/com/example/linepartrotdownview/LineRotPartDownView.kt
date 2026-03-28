@@ -47,7 +47,7 @@ fun Canvas.drawLineRotPartDown(scale : Float, w : Float, h : Float, paint : Pain
                 drawLine(0f, 0f, size, 0f, paint)
             }
         }
-        drawArc(RectF(-size, -size, size, size), rot * dsc(4), rot * (dsc(1) - dsc(4)), false, paint)
+        drawArc(RectF(-size, -size, size, size), rot * dsc(2), rot * (dsc(1) - dsc(2)), false, paint)
     }
 }
 
