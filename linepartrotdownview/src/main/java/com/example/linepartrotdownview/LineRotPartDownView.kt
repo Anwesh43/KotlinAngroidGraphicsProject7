@@ -41,13 +41,13 @@ fun Canvas.drawLineRotPartDown(scale : Float, w : Float, h : Float, paint : Pain
         scale.divideScale(it, parts)
     }
     drawXY(w / 2, h / 2) {
-        rotate(rot * dsc(0))
         for (j in 0..1) {
             drawXY((w / 2) * (1 - dsc(3 * j)) - (w / 2) * j * dsc(3 * j + 2), h * 0.5f * dsc(3 * j + 2) * (1 - j)) {
                 rotate((rot) * (1 + j) * (1f - 2 * j) * dsc(3 * j + 1))
                 drawLine(0f, 0f, size, 0f, paint)
             }
         }
+        drawArc(RectF(-size, -size, size, size), rot * dsc(4), rot * (dsc(1) - dsc(4)), false, paint)
     }
 }
 
