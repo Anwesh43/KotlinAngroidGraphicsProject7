@@ -208,4 +208,12 @@ class RotArcHalfUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RotArcHalfUpView {
+            val view : RotArcHalfUpView = RotArcHalfUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
