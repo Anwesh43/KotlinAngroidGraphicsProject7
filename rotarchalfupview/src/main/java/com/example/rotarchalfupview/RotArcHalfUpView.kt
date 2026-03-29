@@ -183,4 +183,27 @@ class RotArcHalfUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RotArcHalfUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val rahu : RotArcHalfUp = RotArcHalfUp(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rahu.draw(canvas, paint)
+            animator.animate {
+                rahu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rahu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
