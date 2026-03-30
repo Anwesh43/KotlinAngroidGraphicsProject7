@@ -126,4 +126,45 @@ class BiLineRotArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class BLRANode(var i : Int = 0, val state : State = State()) {
+
+        private var next : BLRANode? = null
+        private var prev : BLRANode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = BLRANode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawBLRANode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : BLRANode {
+            var curr : BLRANode? = prev
+            if (dir == 1) {
+                curr = this
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
