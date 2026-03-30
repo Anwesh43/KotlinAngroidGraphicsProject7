@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
+val parts : Int = 6
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -40,15 +40,19 @@ fun Canvas.drawBiLineRotArc(scale : Float, w : Float, h : Float, paint : Paint) 
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
+    drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY((w / 2) * (1 - dsc(0)), 0f) {
+            drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
-                drawXY(0f, h * 0.5f * dsc(3)) {
-                    rotate(rot * dsc((j + 1)))
-                    drawLine(0f, 0f, size, 0f, paint)
+                drawXY((w / 2) * (1 - dsc(0)), 0f) {
+                    drawXY(0f, -h * 0.5f * dsc(4)) {
+                        rotate(rot * dsc((j + 1)) - 2 * rot * dsc(3))
+                        drawLine(0f, 0f, size, 0f, paint)
+                    }
+                    drawXY(0f, h * 0.5f * dsc(5)) {
+                        drawArc(RectF(-size, -size, size, size), 0f, rot * dsc(j + 1), false, paint)
+                    }
                 }
-                drawArc(RectF(-size, -size, size, size), 0f, rot * dsc(j + 1), false, paint)
             }
         }
     }
@@ -160,7 +164,7 @@ class BiLineRotArcView(ctx : Context) : View(ctx) {
         fun getNext(dir : Int, cb : () -> Unit) : BLRANode {
             var curr : BLRANode? = prev
             if (dir == 1) {
-                curr = this
+                curr = next
             }
             if (curr != null) {
                 return curr
