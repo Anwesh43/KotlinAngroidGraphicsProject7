@@ -215,4 +215,13 @@ class BiLineRotArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : BiLineRotArcView {
+            val view : BiLineRotArcView = BiLineRotArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
