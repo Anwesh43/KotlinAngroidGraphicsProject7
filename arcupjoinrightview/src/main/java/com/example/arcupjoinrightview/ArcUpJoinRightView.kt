@@ -212,4 +212,12 @@ class ArcUpJoinRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcUpJoinRightView {
+            val view : ArcUpJoinRightView = ArcUpJoinRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
