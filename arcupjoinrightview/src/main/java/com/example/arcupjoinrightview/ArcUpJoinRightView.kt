@@ -187,4 +187,27 @@ class ArcUpJoinRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcUpJoinRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aujr : ArcUpJoinRight = ArcUpJoinRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aujr.draw(canvas, paint)
+            animator.animate {
+                aujr.update{
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aujr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
