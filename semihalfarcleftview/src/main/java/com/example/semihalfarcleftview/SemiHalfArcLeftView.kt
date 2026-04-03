@@ -183,4 +183,27 @@ class SemiHalfArcLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SemiHalfArcLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val shal : SemiHalfArcLeft = SemiHalfArcLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            shal.draw(canvas, paint)
+            animator.animate {
+                shal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            shal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
