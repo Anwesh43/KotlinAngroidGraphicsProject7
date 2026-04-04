@@ -212,4 +212,12 @@ class ArcBentSizeDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcBentSizeDownView {
+            val view : ArcBentSizeDownView = ArcBentSizeDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
