@@ -187,4 +187,27 @@ class ArcBentSizeDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcBentSizeDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val absd : ArcBentSizeDown = ArcBentSizeDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            absd.draw(canvas, paint)
+            animator.animate {
+                absd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            absd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
