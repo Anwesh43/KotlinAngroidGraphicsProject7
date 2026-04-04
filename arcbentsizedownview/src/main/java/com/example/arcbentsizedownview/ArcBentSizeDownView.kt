@@ -43,9 +43,11 @@ fun Canvas.drawArcBentSizeDown(scale : Float, w : Float, h : Float, paint : Pain
     }
     drawXY(w / 2 + (w / 4) * dsc(2), h / 2 + (h / 2) * dsc(4)) {
         rotate(deg * dsc(3))
-        drawXY(0f, 0f) {
-            rotate(rot * dsc(1))
-            drawLine(0f, 0f, size * dsc(0), 0f, paint)
+        for (j in 0..1) {
+            drawXY(0f, 0f) {
+                rotate(rot * dsc(1) * j)
+                drawLine(0f, 0f, size * dsc(0), 0f, paint)
+            }
         }
         drawArc(RectF(-size, -size, size, size), 0f, rot * dsc(1), false, paint)
     }
