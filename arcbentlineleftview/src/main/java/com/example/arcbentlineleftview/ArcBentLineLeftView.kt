@@ -185,4 +185,26 @@ class ArcBentLineLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcBentLineLeftView) {
+
+        private val abll : ArcBentLineLeft = ArcBentLineLeft(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            abll.draw(canvas, paint)
+            animator.animate {
+                abll.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            abll.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
