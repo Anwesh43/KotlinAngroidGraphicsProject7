@@ -159,6 +159,29 @@ class LineTShapeRotDownView(ctx : Context) : View(ctx) {
         }
     }
 
+    data class LineTShapeRotDown(var i : Int) {
+
+        private var curr : LTSRDNode = LTSRDNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
+
     data class Renderer(var view : LineTShapeRotDownView) {
 
         private val animator : Animator = Animator(view)
@@ -185,7 +208,7 @@ class LineTShapeRotDownView(ctx : Context) : View(ctx) {
     companion object {
         fun create(activity : Activity) : LineTShapeRotDownView {
             val view : LineTShapeRotDownView = LineTShapeRotDownView(activity)
-            activity.setContentView(activity)
+            activity.setContentView(view)
             return view
         }
     }
