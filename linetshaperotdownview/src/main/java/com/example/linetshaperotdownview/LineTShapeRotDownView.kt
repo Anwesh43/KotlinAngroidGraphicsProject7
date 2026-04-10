@@ -156,4 +156,27 @@ class LineTShapeRotDownView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class Renderer(var view : LineTShapeRotDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ltsrd : LineTShapeRotDown = LineTShapeRotDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ltsrd.draw(canvas, paint)
+            animator.animate {
+                ltsrd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ltsrd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
