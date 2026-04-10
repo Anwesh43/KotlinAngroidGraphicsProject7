@@ -181,4 +181,12 @@ class LineTShapeRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineTShapeRotDownView {
+            val view : LineTShapeRotDownView = LineTShapeRotDownView(activity)
+            activity.setContentView(activity)
+            return view
+        }
+    }
 }
