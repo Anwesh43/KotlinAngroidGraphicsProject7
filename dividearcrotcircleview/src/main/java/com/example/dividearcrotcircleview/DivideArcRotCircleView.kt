@@ -42,7 +42,7 @@ fun Canvas.drawDivideArcRotCircle(scale : Float, w : Float, h : Float, paint : P
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY(0f, 0f) {
+            drawXY((w / 2) * (1f - 2 * j) * dsc(4), 0f) {
                 scale(1f - 2 * j, 1f)
                 for (k in 0..1) {
                     drawXY(size * k, 0f) {
