@@ -216,4 +216,12 @@ class DivideArcRotCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : DivideArcRotCircleView {
+            val view : DivideArcRotCircleView = DivideArcRotCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
