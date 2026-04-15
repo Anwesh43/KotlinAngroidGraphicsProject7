@@ -187,4 +187,27 @@ class LineShiftArcJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineShiftArcJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val lsaj : LineShiftArcJoin = LineShiftArcJoin(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsaj.draw(canvas, paint)
+            animator.animate {
+                lsaj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsaj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
