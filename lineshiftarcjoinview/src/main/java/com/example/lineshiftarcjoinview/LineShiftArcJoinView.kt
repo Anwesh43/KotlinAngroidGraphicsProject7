@@ -212,4 +212,12 @@ class LineShiftArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineShiftArcJoinView {
+            val view : LineShiftArcJoinView = LineShiftArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
