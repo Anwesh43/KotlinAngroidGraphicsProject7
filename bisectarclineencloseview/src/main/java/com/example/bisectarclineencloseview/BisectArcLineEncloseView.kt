@@ -46,7 +46,7 @@ fun Canvas.drawBisectArcLineEnclose(scale : Float, w : Float, h : Float, paint :
         drawArc(RectF(-size, -size, size, size), 180f, 90f * dsc(0), false, paint)
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(270f * dsc(2))
+                rotate(270f * dsc(2) * j)
                 drawLine(0f, -size * (1 - dsc(1)), 0f, -size, paint)
             }
         }
