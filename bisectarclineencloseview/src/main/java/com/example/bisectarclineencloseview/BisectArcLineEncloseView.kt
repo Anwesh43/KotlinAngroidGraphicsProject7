@@ -189,4 +189,27 @@ class BisectArcLineEncloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BisectArcLineEncloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bale : BALENode = BALENode(0)
+
+        fun draw(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bale.draw(canvas, paint)
+            animator.animate {
+                bale.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bale.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
