@@ -158,7 +158,7 @@ class BisectArcLineEncloseView(ctx : Context) : View(ctx) {
 
         fun getNext(dir : Int, cb : () -> Unit) : BALENode {
             var curr : BALENode? = prev
-            if (dir === 1) {
+            if (dir == 1) {
                 curr = next
             }
             if (curr != null) {
@@ -196,7 +196,7 @@ class BisectArcLineEncloseView(ctx : Context) : View(ctx) {
 
         private val animator : Animator = Animator(view)
         private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        private val bale : BALENode = BALENode(0)
+        private val bale : BisectArcLineEnclose = BisectArcLineEnclose(0)
 
         fun render(canvas : Canvas) {
             canvas.drawColor(backColor)
