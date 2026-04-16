@@ -65,14 +65,16 @@ fun Canvas.drawBALENode(i : Int, scale : Float, paint : Paint) {
 
 class BisectArcLineEncloseView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
@@ -196,7 +198,7 @@ class BisectArcLineEncloseView(ctx : Context) : View(ctx) {
         private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
         private val bale : BALENode = BALENode(0)
 
-        fun draw(canvas : Canvas) {
+        fun render(canvas : Canvas) {
             canvas.drawColor(backColor)
             bale.draw(canvas, paint)
             animator.animate {
