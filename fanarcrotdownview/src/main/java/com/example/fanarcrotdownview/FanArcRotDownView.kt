@@ -214,4 +214,12 @@ class FanArcRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : FanArcRotDownView {
+            val view : FanArcRotDownView = FanArcRotDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
