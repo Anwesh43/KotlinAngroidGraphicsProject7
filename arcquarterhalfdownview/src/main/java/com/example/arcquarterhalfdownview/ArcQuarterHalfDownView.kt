@@ -211,4 +211,12 @@ class ArcQuarterHalfDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity): ArcQuarterHalfDownView {
+            val view : ArcQuarterHalfDownView = ArcQuarterHalfDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
