@@ -186,7 +186,30 @@ class FanArcRotDownView(ctx : Context) : View(ctx) {
         }
 
         fun startUpdating(cb : () -> Unit) {
-            curr.startUpdaitng(cb)
+            curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : FanArcRotDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val fard : FanArcRotDown = FanArcRotDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            fard.draw(canvas, paint)
+            animator.animate {
+                fard.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            fard.startUpdating {
+                animator.start()
+            }
         }
     }
 }
