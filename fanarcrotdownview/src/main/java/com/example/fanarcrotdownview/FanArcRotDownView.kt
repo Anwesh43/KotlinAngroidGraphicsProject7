@@ -47,9 +47,9 @@ fun Canvas.drawFanArcRotDown(scale : Float, w : Float, h : Float, paint : Paint)
             drawXY(0f, 0f) {
                 rotate(-rot * 0.5f * (1f - 2 * j))
                 drawLine(size * j * (1 - dsc(2 * j)), 0f, size * (dsc(j) * (1 - j) + j), 0f, paint)
-
             }
         }
+        drawArc(RectF(-size, -size, size, size), -rot / 2, rot * dsc(1), false, paint)
     }
 }
 
