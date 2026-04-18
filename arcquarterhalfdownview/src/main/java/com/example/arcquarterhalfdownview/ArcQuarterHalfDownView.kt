@@ -186,4 +186,27 @@ class ArcQuarterHalfDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcQuarterHalfDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aqhd : ArcQuarterHalfDown = ArcQuarterHalfDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aqhd.draw(canvas, paint)
+            animator.animate {
+                aqhd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aqhd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
