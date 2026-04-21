@@ -61,16 +61,18 @@ fun Canvas.drawMHALNode(i : Int, scale : Float, paint : Paint) {
     drawMidHalfArcLine(scale,w , h, paint)
 }
 
-class MidArcHalfLneView(ctx : Context) : View(ctx) {
+class MidArcHalfLineView(ctx : Context) : View(ctx) {
+
+    private val renderer : Renderer = Renderer(this)
 
     override fun onDraw(canvas : Canvas) {
-
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
@@ -188,7 +190,7 @@ class MidArcHalfLneView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Renderer(var view : MidArcHalfLine) {
+    data class Renderer(var view : MidArcHalfLineView) {
 
         private val animator : Animator = Animator(view)
         private val mahl : MidArcHalfLine = MidArcHalfLine(0)
