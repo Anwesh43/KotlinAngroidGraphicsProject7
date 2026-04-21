@@ -212,4 +212,13 @@ class MidArcHalfLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : MidArcHalfLineView {
+            val view : MidArcHalfLineView = MidArcHalfLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
