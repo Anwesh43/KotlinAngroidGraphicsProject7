@@ -187,4 +187,27 @@ class MidArcHalfLneView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : MidArcHalfLine) {
+
+        private val animator : Animator = Animator(view)
+        private val mahl : MidArcHalfLine = MidArcHalfLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            mahl.draw(canvas, paint)
+            animator.animate {
+                mahl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            mahl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
