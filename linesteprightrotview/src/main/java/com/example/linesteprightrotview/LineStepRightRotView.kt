@@ -34,6 +34,13 @@ fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
     restore()
 }
 
+fun Canvas.drawLineWithoutDot(x1 : Float, y1 : Float, x2 : Float, y2 : Float, paint : Paint) {
+    if (Math.abs(x1 - x2) < 0.1f && Math.abs(y1 - y2) < 0.1f) {
+        return
+    }
+    drawLine(x1, y1, x2, y2, paint)
+}
+
 fun Canvas.drawLineStepRightRot(scale : Float, w : Float, h : Float, paint : Paint) {
     val size : Float = Math.min(w, h) / sizeFactor
     val dsc : (Int) -> Float = {
@@ -42,13 +49,13 @@ fun Canvas.drawLineStepRightRot(scale : Float, w : Float, h : Float, paint : Pai
     drawXY(w / 2 + (w / 2) * dsc(6), h / 2) {
         rotate(rot * dsc(5))
         drawXY(-w * 0.5f * (1 - dsc(0)), 0f) {
-            drawLine(0f, 0f, -size, 0f, paint)
+            drawLineWithoutDot(0f, 0f, -size, 0f, paint)
         }
         for (j in 0..1) {
-            drawXY(-size * 0.5f * j, 0f) {
-                drawLine(0f, 0f, 0f, -size * 0.5f * dsc(1 + 2 * j), paint)
-                drawXY(0f, -size / 2) {
-                    drawLine(0f, 0f, -size * 0.5f * dsc(2 + 2 * j), 0f, paint)
+            drawXY(-size * 0.5f * j, -size * 0.5f * j) {
+                drawLineWithoutDot(0f, 0f, 0f, -size * 0.5f * dsc(1 + 2 * j), paint)
+                drawXY(0f, -size * 0.5f) {
+                    drawLineWithoutDot(0f, 0f, -size * 0.5f * dsc(2 + 2 * j), 0f, paint)
                 }
             }
         }
