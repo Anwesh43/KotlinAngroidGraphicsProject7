@@ -190,4 +190,27 @@ class LineStepRightRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineStepRightRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsrr : LineStepRightRot = LineStepRightRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsrr.draw(canvas, paint)
+            animator.animate {
+                lsrr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsrr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
