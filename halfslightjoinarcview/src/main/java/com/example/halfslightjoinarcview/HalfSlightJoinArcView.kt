@@ -215,4 +215,12 @@ class HalfSlightJoinArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : HalfSlightJoinArcView {
+            val view : HalfSlightJoinArcView = HalfSlightJoinArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
