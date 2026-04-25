@@ -42,9 +42,11 @@ fun Canvas.drawVerticalConcArcRight(scale : Float, w : Float, h : Float, paint :
     }
     drawXY(w / 4 + (w / 4) * dsc(2) + (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
-            drawXY(0f, size / 2 - size * j) {
+            drawXY(0f, 0f) {
                 rotate(rot * (2 * j - 1) * dsc(3))
-                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 90f, 180f * dsc(j), false, paint)
+                drawXY(0f, -size) {
+                    drawArc(RectF(-size / 2, 0f, size / 2, size), 90f, 180f * dsc(j), false, paint)
+                }
             }
         }
     }
