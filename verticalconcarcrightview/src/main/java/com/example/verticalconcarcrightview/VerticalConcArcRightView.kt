@@ -211,4 +211,12 @@ class VerticalConcArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : VerticalConcArcRightView {
+            val view : VerticalConcArcRightView = VerticalConcArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
