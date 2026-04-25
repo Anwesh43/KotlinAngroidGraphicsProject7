@@ -43,6 +43,7 @@
             <option value="$PROJECT_DIR$/fanarcrotdownview" />
             <option value="$PROJECT_DIR$/halfarcjoindownview" />
             <option value="$PROJECT_DIR$/halfarclinejoinview" />
+            <option value="$PROJECT_DIR$/halfslightjoinarcview" />
             <option value="$PROJECT_DIR$/joinlinesemicircleview" />
             <option value="$PROJECT_DIR$/leftlineperprotview" />
             <option value="$PROJECT_DIR$/linearcdroprotview" />
@@ -54,6 +55,7 @@
             <option value="$PROJECT_DIR$/linecapquarterarcview" />
             <option value="$PROJECT_DIR$/linecatcharcleftview" />
             <option value="$PROJECT_DIR$/linediviiderotrightview" />
+            <option value="$PROJECT_DIR$/linedownarcencloseview" />
             <option value="$PROJECT_DIR$/linedownperprightview" />
             <option value="$PROJECT_DIR$/lineenclosequarterarcview" />
             <option value="$PROJECT_DIR$/lineextendarcdownview" />
