@@ -11,13 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.halfslightjoinarcview.HalfSlightJoinArcView
 import com.example.kotlinangroidgraphicsproject7.ui.theme.KotlinAngroidGraphicsProject7Theme
+import com.example.verticalconcarcrightview.VerticalConcArcRightView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //LineRotPartialArcView.create(this)
-        HalfSlightJoinArcView.create(this)
+        VerticalConcArcRightView.create(this)
     }
 }
