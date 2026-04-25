@@ -186,4 +186,27 @@ class VerticalConcArcRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : VerticalConcArcRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val vcar : VerticalConcArcRight = VerticalConcArcRight(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            vcar.draw(canvas, paint)
+            animator.animate {
+                vcar.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            vcar.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
