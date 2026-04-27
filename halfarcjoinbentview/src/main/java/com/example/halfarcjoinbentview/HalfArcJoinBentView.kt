@@ -212,4 +212,12 @@ class HalfArcJoinBentView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : HalfArcJoinBentView {
+            val view : HalfArcJoinBentView = HalfArcJoinBentView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
