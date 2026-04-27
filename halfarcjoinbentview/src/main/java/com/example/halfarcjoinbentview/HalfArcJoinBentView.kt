@@ -97,7 +97,7 @@ class HalfArcJoinBentView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Animaotr(var view : View, var animated : Boolean = false) {
+    data class Animator(var view : View, var animated : Boolean = false) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
@@ -185,6 +185,29 @@ class HalfArcJoinBentView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : HalfArcJoinBentView) {
+
+        private val animator :Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val hajb : HalfArcJoinBent = HalfArcJoinBent(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            hajb.draw(canvas, paint)
+            animator.animate {
+                hajb.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hajb.startUpdating {
+                animator.start()
+            }
         }
     }
 }
