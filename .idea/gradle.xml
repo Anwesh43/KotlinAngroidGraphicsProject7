@@ -41,6 +41,7 @@
             <option value="$PROJECT_DIR$/dividearcrotcircleview" />
             <option value="$PROJECT_DIR$/downlinerightarcview" />
             <option value="$PROJECT_DIR$/fanarcrotdownview" />
+            <option value="$PROJECT_DIR$/halfarcjoinbentview" />
             <option value="$PROJECT_DIR$/halfarcjoindownview" />
             <option value="$PROJECT_DIR$/halfarclinejoinview" />
             <option value="$PROJECT_DIR$/halfslightjoinarcview" />
@@ -97,6 +98,7 @@
             <option value="$PROJECT_DIR$/sidequarterhalfarcview" />
             <option value="$PROJECT_DIR$/sweeplinearcupview" />
             <option value="$PROJECT_DIR$/twoarcencloserlineview" />
+            <option value="$PROJECT_DIR$/verticalconcarcrightview" />
           </set>
         </option>
       </GradleProjectSettings>
