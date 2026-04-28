@@ -215,4 +215,12 @@ class BiArcCloseDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcCloseDownView {
+            val view : BiArcCloseDownView = BiArcCloseDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
