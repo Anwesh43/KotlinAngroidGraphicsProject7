@@ -190,4 +190,27 @@ class BiArcCloseDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcCloseDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bacd : BiArcCloseDown = BiArcCloseDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bacd.draw(canvas, paint)
+            animator.animate {
+                bacd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bacd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
