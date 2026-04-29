@@ -18,7 +18,7 @@ val colors : Array<String> = arrayOf(
 )
 val parts : Int = 6
 val scGap : Float = 0.05f / parts
-val strokeFactor : Float = 5.9f
+val strokeFactor : Float = 90f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 45f
@@ -52,7 +52,7 @@ fun Canvas.drawLineBentEncloseArc(scale : Float, w : Float, h : Float, paint : P
                 }
             }
         }
-        drawArc(RectF(-size, -size, size, size), rot, rot * 2 * dsc(4), false, paint)
+        drawArc(RectF(-size, -size, size, size), 180 + rot, rot * 2 * dsc(4), false, paint)
     }
 }
 
