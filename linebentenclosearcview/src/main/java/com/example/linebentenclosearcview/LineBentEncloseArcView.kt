@@ -192,4 +192,27 @@ class LineBentEncloseArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentEncloseArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbea : LineBentEncloseArc = LineBentEncloseArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbea.draw(canvas, paint)
+            animator.animate {
+                lbea.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbea.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
