@@ -217,4 +217,12 @@ class LineBentEncloseArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBentEncloseArcView {
+            val view : LineBentEncloseArcView = LineBentEncloseArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
