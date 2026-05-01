@@ -45,7 +45,7 @@ fun Canvas.drawLineUpBiArc(scale : Float, w : Float, h : Float, paint : Paint) {
             drawXY(0f, 0f) {
                 rotate(rot * dsc(4) * j)
                 drawXY(-size + 2 * size * j, 0f) {
-                    drawLine(0f, 0f, 0f, -size * (dsc(3) * j + dsc(0) * (1 - j)), paint)
+                    drawLine(0f, -size * j * (1 - dsc(3)), 0f, -size * (dsc(0) * (1 - j) + j), paint)
                 }
                 drawXY(-2 * size * (1 - j), 0f) {
                     drawArc(RectF(0f, -size, 2 * size, size), -90f + 270f * j, 90f * dsc(1 + j), false, paint)
