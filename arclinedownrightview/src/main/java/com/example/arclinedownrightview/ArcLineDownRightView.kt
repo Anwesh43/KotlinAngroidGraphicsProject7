@@ -186,4 +186,27 @@ class ArcLineDownRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcLineDownRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aldr : ArcLineDownRight = ArcLineDownRight(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aldr.draw(canvas, paint)
+            animator.animate {
+                aldr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aldr.startUdpating {
+                animator.start()
+            }
+        }
+    }
 }
