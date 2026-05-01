@@ -216,4 +216,12 @@ class LineUpBiArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineUpBiArcView {
+            val view : LineUpBiArcView = LineUpBiArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
