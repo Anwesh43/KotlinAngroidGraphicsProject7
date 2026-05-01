@@ -21,7 +21,7 @@ val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
-val backColor : String = "#BDBDBD"
+val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 180f
 
 fun Int.inverse() : Float = 1f / this
@@ -189,6 +189,29 @@ class LineUpBiArcView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineUpBiArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val luba : LineUpBiArc = LineUpBiArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            luba.draw(canvas, paint)
+            animator.animate {
+                luba.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            luba.startUpdating {
+                animator.start()
+            }
         }
     }
 }
