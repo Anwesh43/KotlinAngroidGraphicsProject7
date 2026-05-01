@@ -64,3 +64,19 @@ fun Canvas.drawLUBANode(i : Int, scale : Float, paint : Paint) {
     paint.style = Paint.Style.STROKE
     drawLineUpBiArc(scale, w, h, paint)
 }
+
+class LineUpBiArcView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
+}
