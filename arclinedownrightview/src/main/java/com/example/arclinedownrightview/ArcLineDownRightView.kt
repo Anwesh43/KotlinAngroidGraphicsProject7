@@ -211,4 +211,12 @@ class ArcLineDownRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcLineDownRightView {
+            val view : ArcLineDownRightView = ArcLineDownRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
