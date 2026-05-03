@@ -91,4 +91,32 @@ class LineArcRotLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class Animator(var view : View, var animted : Boolean = false) {
+
+        fun animate(cb : () -> Unit) {
+            if (animated) {
+                cb()
+                try {
+                    Thread.sleep(delay)
+                    view.invalidate()
+                } catch(ex : Exception) {
+
+                }
+            }
+        }
+
+        fun start() {
+            if (!animted) {
+                animted = true
+                view.postInvalidate()
+            }
+        }
+
+        fun stop() {
+            if (animted) {
+                animted = false
+            }
+        }
+    }
 }
