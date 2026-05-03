@@ -92,7 +92,7 @@ class LineArcRotLeftView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Animator(var view : View, var animted : Boolean = false) {
+    data class Animator(var view : View, var animated : Boolean = false) {
 
         fun animate(cb : () -> Unit) {
             if (animated) {
@@ -107,15 +107,15 @@ class LineArcRotLeftView(ctx : Context) : View(ctx) {
         }
 
         fun start() {
-            if (!animted) {
-                animted = true
+            if (!animated) {
+                animated = true
                 view.postInvalidate()
             }
         }
 
         fun stop() {
-            if (animted) {
-                animted = false
+            if (animated) {
+                animated = false
             }
         }
     }
@@ -158,6 +158,29 @@ class LineArcRotLeftView(ctx : Context) : View(ctx) {
             }
             cb()
             return this
+        }
+    }
+
+    data class LineArcRotLeft(var i : Int) {
+
+        private var curr : LARLNode = LARLNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
         }
     }
 }
