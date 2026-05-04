@@ -48,9 +48,9 @@ fun Canvas.drawJoinArcDropLine(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2, h / 2) {
         for (j in 0..(arcs - 1)) {
             drawXY(-size + size * j, h * 0.5f * dsk(j, 3)) {
-                rotate(dsk(j, 2))
-                drawArc(RectF(-size / 2, 0f, size / 2, -size), 90f * (1 - dsk(j, 0)), 90f * dsk(j, 0), false, paint)
-                drawXY(size / 2, 0f) {
+                rotate(rot * dsk(j, 2))
+                drawArc(RectF(-size / 2, -size, size / 2, 0f), 90f * (1 - dsk(j, 0)), 90f * dsk(j, 0), false, paint)
+                drawXY(size / 2, -size / 2) {
                     drawLine(-size * 0.5f * dsk(j, 1), 0f, 0f, 0f, paint)
                 }
             }
