@@ -46,7 +46,7 @@ fun Canvas.drawLinePeakAltRot(scale : Float, w : Float, h : Float, paint : Paint
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
                 drawXY((w / 2 - size) * (1 - dsc(2)), 0f) {
-                    rotate(-rot * dsc(3) * j)
+                    rotate(rot * dsc(3) * j)
                     drawLine(0f, 0f, 0f, -size * dsc(0), paint)
                     drawXY(0f, -size) {
                         drawLine(0f, 0f, size * dsc(1), 0f, paint)
