@@ -7,6 +7,7 @@ import android.content.Context
 import android.graphics.Paint
 import android.graphics.Canvas
 import android.graphics.RectF
+import androidx.constraintlayout.widget.ConstraintSet.Motion
 import androidx.core.graphics.toColorInt
 
 val colors : Array<String> = arrayOf(
@@ -65,4 +66,20 @@ fun Canvas.drawJADLNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
     drawJoinArcDropLine(scale, w, h, paint)
+}
+
+class JoinArcDropLineView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
 }
