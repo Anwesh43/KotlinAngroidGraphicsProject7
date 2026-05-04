@@ -47,12 +47,14 @@
             <option value="$PROJECT_DIR$/halfarcjoindownview" />
             <option value="$PROJECT_DIR$/halfarclinejoinview" />
             <option value="$PROJECT_DIR$/halfslightjoinarcview" />
+            <option value="$PROJECT_DIR$/joinarcdroplineview" />
             <option value="$PROJECT_DIR$/joinlinesemicircleview" />
             <option value="$PROJECT_DIR$/leftlineperprotview" />
             <option value="$PROJECT_DIR$/linearcdroprotview" />
             <option value="$PROJECT_DIR$/linearcjoinleftview" />
             <option value="$PROJECT_DIR$/linearclinerotview" />
             <option value="$PROJECT_DIR$/linearcrightrotview" />
+            <option value="$PROJECT_DIR$/linearcrotleftview" />
             <option value="$PROJECT_DIR$/linebentarcfullview" />
             <option value="$PROJECT_DIR$/linebentarcrotview" />
             <option value="$PROJECT_DIR$/linebentenclosearcview" />
