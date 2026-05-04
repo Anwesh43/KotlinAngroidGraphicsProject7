@@ -218,4 +218,12 @@ class LinePeakAltRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LinePeakAltRotView {
+            val view : LinePeakAltRotView = LinePeakAltRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
