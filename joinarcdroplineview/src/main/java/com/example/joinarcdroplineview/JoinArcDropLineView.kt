@@ -219,4 +219,13 @@ class JoinArcDropLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) :JoinArcDropLineView {
+            val view : JoinArcDropLineView = JoinArcDropLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
