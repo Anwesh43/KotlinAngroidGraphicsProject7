@@ -194,4 +194,27 @@ class JoinArcDropLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : JoinArcDropLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val jadl : JoinArcDropLine = JoinArcDropLine(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            jadl.draw(canvas, paint)
+            animator.animate {
+                jadl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            jadl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
