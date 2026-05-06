@@ -60,7 +60,7 @@ fun Canvas.drawLACLNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
     paint.strokeCap = Paint.Cap.ROUND
-    drawLACLNode(i, scale, paint)
+    drawLineArcCloseLine(scale, w, h, paint)
 }
 
 class LineArcCloseLineView(ctx : Context) : View(ctx) {
