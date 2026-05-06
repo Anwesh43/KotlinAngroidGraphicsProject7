@@ -125,4 +125,45 @@ class LineArcCloseLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class LACLNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LACLNode? = null
+        private var prev : LACLNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LACLNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLACLNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir: Int, cb : () -> Unit) : LACLNode {
+            var curr : LACLNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
