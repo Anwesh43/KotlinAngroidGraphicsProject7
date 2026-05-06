@@ -214,4 +214,12 @@ class LineArcCloseLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineArcCloseLineView {
+            val view : LineArcCloseLineView = LineArcCloseLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
