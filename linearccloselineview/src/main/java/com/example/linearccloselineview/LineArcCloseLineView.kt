@@ -189,4 +189,27 @@ class LineArcCloseLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcCloseLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lacl : LineArcCloseLine = LineArcCloseLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lacl.draw(canvas, paint)
+            animator.animate {
+                lacl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lacl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
