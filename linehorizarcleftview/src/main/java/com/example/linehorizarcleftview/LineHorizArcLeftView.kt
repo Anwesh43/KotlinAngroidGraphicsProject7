@@ -210,4 +210,12 @@ class LineHorizArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineHorizArcLeftView {
+            val view : LineHorizArcLeftView = LineHorizArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
