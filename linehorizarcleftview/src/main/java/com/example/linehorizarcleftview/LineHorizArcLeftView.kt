@@ -23,6 +23,7 @@ val sizeFactor : Float = 5.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 180f
+val deg : Float = 90f
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -40,7 +41,8 @@ fun Canvas.drawLineHorizArcLeft(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - (w / 2) * dsc(3), h / 2) {
+    drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
+        rotate(deg * dsc(3))
         drawXY((w / 2) * (1 - dsc(0)), 0f) {
             rotate(rot * dsc(1))
             drawLine(0f, 0f, size, 0f, paint)
