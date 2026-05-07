@@ -140,7 +140,7 @@ class LineHorizArcLeftView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun draw(canavs : Canvas, paint : Paint) {
+        fun draw(canvas : Canvas, paint : Paint) {
             canvas.drawLHALNode(i, state.scale, paint)
         }
 
