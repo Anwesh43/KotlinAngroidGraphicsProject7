@@ -198,4 +198,27 @@ class SqEncloserLineRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SqEncloserLineRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val selr : SqEncloserLineRot = SqEncloserLineRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            selr.draw(canvas, paint)
+            animator.animate {
+                selr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            selr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
