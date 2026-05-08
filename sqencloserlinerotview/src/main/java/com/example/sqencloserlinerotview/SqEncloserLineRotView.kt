@@ -58,7 +58,8 @@ fun Canvas.drawSqEncloserLineRot(scale : Float, w : Float, h : Float, paint : Pa
             rotate(rot * bisectScale(3, 1))
             drawLine(0f, 0f, 0f, size, paint)
         }
-        drawRect(RectF(-size * dsc(4), -size, 0f, 0f), paint)
+        paint.style = Paint.Style.FILL
+        drawRect(RectF(-size * dsc(4), -size * Math.floor(dsc(3).toDouble()).toFloat(), 0f, 0f), paint)
     }
 }
 
