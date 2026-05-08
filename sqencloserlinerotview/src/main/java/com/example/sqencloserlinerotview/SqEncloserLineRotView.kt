@@ -223,4 +223,12 @@ class SqEncloserLineRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : SqEncloserLineRotView {
+            val view : SqEncloserLineRotView = SqEncloserLineRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
