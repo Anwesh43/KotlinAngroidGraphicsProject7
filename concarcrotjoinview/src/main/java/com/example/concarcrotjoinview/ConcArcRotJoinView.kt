@@ -188,4 +188,27 @@ class ConcArcRotJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ConcArcRotJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val carj : ConcArcRotJoin = ConcArcRotJoin(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            carj.draw(canvas, paint)
+            animator.animate {
+                carj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            carj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
