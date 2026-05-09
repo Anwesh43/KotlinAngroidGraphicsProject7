@@ -213,4 +213,12 @@ class ConcArcRotJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ConcArcRotJoinView {
+            val view : ConcArcRotJoinView = ConcArcRotJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
