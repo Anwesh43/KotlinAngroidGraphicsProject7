@@ -220,4 +220,12 @@ class BiArcJoinSemiView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcJoinSemiView {
+            val view : BiArcJoinSemiView = BiArcJoinSemiView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
