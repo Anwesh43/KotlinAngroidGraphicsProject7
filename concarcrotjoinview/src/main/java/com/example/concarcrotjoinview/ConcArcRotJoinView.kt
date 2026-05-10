@@ -21,7 +21,7 @@ val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
-val rot : Float = -180f
+val rot : Float = 180f
 val sweep : Float = 180f
 val backColor : Int = "#BDBDBD".toColorInt()
 
@@ -44,9 +44,17 @@ fun Canvas.drawConcArcRotJoin(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
-            drawXY(-2 * size + size * j, 0f) {
+            drawXY(-size, 0f) {
                 rotate(rot * (1 - j) * dsc(2))
-                drawArc(RectF(0f, -size / 2, size, size / 2), -sweep * (1 - j) * dsc(j), sweep * dsc(j), false, paint)
+                drawXY(size * j, 0f) {
+                    drawArc(
+                        RectF(-size, -size / 2, 0f, size / 2),
+                        sweep * (1 - dsc(j) * (1 - j)),
+                        sweep * dsc(j),
+                        false,
+                        paint
+                    )
+                }
             }
         }
     }
