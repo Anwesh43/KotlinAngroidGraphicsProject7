@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlinangroidgraphicsproject7.ui.theme.KotlinAngroidGraphicsProject7Theme
-import com.example.linebentarcjoinview.LineBentArcJoinView
+import com.example.quarterarcrothalfview.QuarterArcRotHalfView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //LineRotPartialArcView.create(this)
-        LineBentArcJoinView.create(this)
+        QuarterArcRotHalfView.create(this)
     }
 }
