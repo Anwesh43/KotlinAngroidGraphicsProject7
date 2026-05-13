@@ -43,9 +43,18 @@ fun Canvas.drawQuarterArcRotHalf(scale : Float, w : Float, h : Float, paint : Pa
     drawXY(w / 2, h / 2 - (h / 2) * dsc(5)) {
         rotate(rot * dsc(4))
         for (j in 0..1) {
-            drawXY((-w / 2 + size / 2 + (w - size) * j) * (1 - dsc(2)), 0f) {
-                rotate(rot * dsc(3) * j)
-                drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), -rot * (1 + j), rot * dsc(j), false, paint)
+            drawXY(0f, 0f) {
+                rotate(rot * 2 * dsc(3) * j)
+                drawXY((-w / 2 + (w * j)) + (w / 2 - size / 2) * (1 - 2 * j) * dsc(2), 0f) {
+
+                    drawArc(
+                        RectF(-size / 2, -size / 2, size / 2, size / 2),
+                        -rot * (1 + j),
+                        rot * dsc(j),
+                        false,
+                        paint
+                    )
+                }
             }
         }
     }
