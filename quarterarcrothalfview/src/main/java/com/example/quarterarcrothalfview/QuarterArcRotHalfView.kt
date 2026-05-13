@@ -212,4 +212,12 @@ class QuarterArcRotHalfView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : QuarterArcRotHalfView {
+            val view : QuarterArcRotHalfView = QuarterArcRotHalfView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
