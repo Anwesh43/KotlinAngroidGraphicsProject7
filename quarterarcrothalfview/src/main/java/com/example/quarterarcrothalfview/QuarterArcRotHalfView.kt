@@ -187,4 +187,27 @@ class QuarterArcRotHalfView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterArcRotHalfView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qarh : QuarterArcRotHalf = QuarterArcRotHalf(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qarh.draw(canvas, paint)
+            animator.animate {
+                qarh.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qarh.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
