@@ -213,4 +213,12 @@ class LineBentRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBentRotDownView {
+            val view : LineBentRotDownView = LineBentRotDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
