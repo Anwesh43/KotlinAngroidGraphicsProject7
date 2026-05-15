@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
+val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -47,7 +47,7 @@ fun Canvas.drawLineBentRotDown(scale : Float, w : Float, h : Float, paint : Pain
             drawXY(0f, -size) {
                 drawLine(0f, 0f, size * dsc(1), size * dsc(1), paint)
             }
-            drawArc(RectF(-size, -size, size, size), 0f, rot * dsc(2), false, paint)
+            drawArc(RectF(-size, -size / 2, 0f, size / 2), 0f, rot * 2 * dsc(2), false, paint)
         }
     }
 }
