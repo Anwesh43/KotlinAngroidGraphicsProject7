@@ -47,7 +47,7 @@ fun Canvas.drawLineBentRotDown(scale : Float, w : Float, h : Float, paint : Pain
             drawXY(0f, -size) {
                 drawLine(0f, 0f, size * dsc(1), size * dsc(1), paint)
             }
-            drawArc(RectF(-size, -size / 2, 0f, size / 2), 0f, rot * 2 * dsc(2), false, paint)
+            drawArc(RectF(0f, -size / 2, size, size / 2), 0f, rot * 2 * dsc(2), false, paint)
         }
     }
 }
