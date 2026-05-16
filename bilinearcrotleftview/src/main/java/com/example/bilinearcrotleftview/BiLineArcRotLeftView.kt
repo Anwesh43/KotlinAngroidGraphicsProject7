@@ -187,4 +187,27 @@ class BiLineArcRotLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLineArcRotLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blarl : BiLineArcRotLeft = BiLineArcRotLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blarl.draw(canvas, paint)
+            animator.animate {
+                blarl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blarl.startUpdatin {
+                animator.start()
+            }
+        }
+    }
 }
