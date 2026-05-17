@@ -219,4 +219,12 @@ class BiSqEncloserDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activitiy : Activity) : BiSqEncloserDownView {
+            val view : BiSqEncloserDownView = BiSqEncloserDownView(activitiy)
+            activitiy.setContentView(view)
+            return view
+        }
+    }
 }
