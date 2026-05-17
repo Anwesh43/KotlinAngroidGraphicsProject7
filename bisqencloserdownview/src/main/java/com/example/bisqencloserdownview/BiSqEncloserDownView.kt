@@ -16,8 +16,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.05f / parts
 val rot : Float= 180f
 val sizeFactor : Float = 5.9f
 val strokeFactor : Float = 90f
@@ -40,21 +40,24 @@ fun Canvas.drawBiSqEncloserDown(scale : Float, w : Float, h : Float, paint : Pai
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
-        rotate(rot * dsc(3))
-        for (j in 0..1) {
-            drawXY(0f, 0f) {
-                scale(1f - 2 * j, 1f)
-                drawXY(-w * 0.25f * (1 - dsc(2)), 0f) {
-                    drawXY(0f, -size) {
-                        drawLine(0f, 0f, -size * dsc(0), 0f, paint)
-                        drawXY(-size, 0f) {
-                            drawLine(0f, 0f, 0f, size * dsc(1), paint)
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
+        drawXY(0f, 0f) {
+            rotate(rot * dsc(3))
+            for (j in 0..1) {
+                drawXY(0f, 0f) {
+                    scale(1f - 2 * j, 1f)
+                    drawXY(-w * 0.25f * (1 - dsc(2)), 0f) {
+                        drawXY(0f, -size) {
+                            drawLine(0f, 0f, -size * dsc(0), 0f, paint)
+                            drawXY(-size, 0f) {
+                                drawLine(0f, 0f, 0f, size * dsc(1), paint)
+                            }
                         }
                     }
                 }
             }
         }
+        drawArc(RectF(-size, -size, size, size), 0f, 180f * dsc(4), false, paint)
     }
 }
 
