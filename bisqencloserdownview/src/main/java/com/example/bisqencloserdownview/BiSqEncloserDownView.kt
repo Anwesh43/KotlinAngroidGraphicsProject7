@@ -194,4 +194,27 @@ class BiSqEncloserDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiSqEncloserDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bsed : BiSqEncloseDown = BiSqEncloseDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bsed.draw(canvas, paint)
+            animator.animate {
+                bsed.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bsed.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
