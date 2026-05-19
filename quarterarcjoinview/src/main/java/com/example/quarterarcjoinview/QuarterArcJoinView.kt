@@ -192,4 +192,27 @@ class QuarterArcJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterArcJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qaj : QuarterArcJoin = QuarterArcJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qaj.draw(canvas, paint)
+            animator.animate {
+                qaj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qaj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
