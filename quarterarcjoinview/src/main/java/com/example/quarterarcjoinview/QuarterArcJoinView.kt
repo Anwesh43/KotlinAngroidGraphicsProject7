@@ -217,4 +217,12 @@ class QuarterArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : QuarterArcJoinView {
+            val view : QuarterArcJoinView = QuarterArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
