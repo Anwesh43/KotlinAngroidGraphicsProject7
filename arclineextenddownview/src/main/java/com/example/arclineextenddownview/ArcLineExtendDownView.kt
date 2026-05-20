@@ -186,4 +186,27 @@ class ArcLineExtendDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcLineExtendDownView) {
+
+        private val aled : ArcLineExtendDown = ArcLineExtendDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aled.draw(canvas, paint)
+            animator.animate {
+                aled.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aled.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
