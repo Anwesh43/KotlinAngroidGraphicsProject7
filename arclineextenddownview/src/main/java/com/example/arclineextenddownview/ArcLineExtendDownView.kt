@@ -211,4 +211,12 @@ class ArcLineExtendDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcLineExtendDownView {
+            val view : ArcLineExtendDownView = ArcLineExtendDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
