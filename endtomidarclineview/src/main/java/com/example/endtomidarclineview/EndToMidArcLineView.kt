@@ -214,4 +214,12 @@ class EndToMidArcLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : EndToMidArcLineView {
+            val view : EndToMidArcLineView = EndToMidArcLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
