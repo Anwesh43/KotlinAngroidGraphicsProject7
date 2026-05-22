@@ -16,7 +16,7 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 4
+val parts : Int = 5
 val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
@@ -40,11 +40,14 @@ fun Canvas.drawQuarterArcExtendLine(scale : Float, w : Float, h : Float, paint :
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2 + (h / 2) * dsc(3)) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(2))
         drawArc(RectF(-size, -size, size, size), -rot, rot * dsc(0), false, paint)
         drawXY(size, 0f) {
             drawLine(0f, 0f, -size * dsc(1), size * dsc(1), paint)
+        }
+        drawXY(0f, size) {
+            drawLine(0f, 0f, 0f, -2 * size * dsc(3), paint)
         }
     }
 }
