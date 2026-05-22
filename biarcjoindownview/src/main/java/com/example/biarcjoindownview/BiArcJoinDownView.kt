@@ -218,4 +218,12 @@ class BiArcJoinDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcJoinDownView {
+            val view : BiArcJoinDownView = BiArcJoinDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
