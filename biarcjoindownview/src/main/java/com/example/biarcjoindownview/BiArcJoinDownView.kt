@@ -129,4 +129,45 @@ class BiArcJoinDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class BAJDNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : BAJDNode? = null
+        private var prev : BAJDNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = BAJDNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawBAJDNode(i, state.scale, paint)
+        }
+
+        fun update(cb :(Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : BAJDNode {
+            var curr : BAJDNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
