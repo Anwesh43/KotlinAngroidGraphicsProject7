@@ -121,4 +121,45 @@ class QuarterArcExtendLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class QAELNode(var i : Int = 0, val state : State = State()) {
+
+        private var next : QAELNode? = null
+        private var prev : QAELNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = QAELNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawQAELNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : QAELNode {
+            var curr : QAELNode? = prev
+            if (dir === 1) {
+                curr = this
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
