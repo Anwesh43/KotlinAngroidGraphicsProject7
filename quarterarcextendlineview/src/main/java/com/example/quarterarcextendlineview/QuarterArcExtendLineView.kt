@@ -210,4 +210,12 @@ class QuarterArcExtendLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : QuarterArcExtendLineView {
+            val view : QuarterArcExtendLineView = QuarterArcExtendLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
