@@ -185,4 +185,27 @@ class QuarterArcExtendLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterArcExtendLineView, var animated : Boolean = false) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qael : QuarterArcExtendLine = QuarterArcExtendLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qael.draw(canvas, paint)
+            animator.animate {
+                qael.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qael.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
