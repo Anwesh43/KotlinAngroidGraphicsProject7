@@ -211,4 +211,12 @@ class ConcArcUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ConcArcUpView {
+            val view : ConcArcUpView = ConcArcUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
