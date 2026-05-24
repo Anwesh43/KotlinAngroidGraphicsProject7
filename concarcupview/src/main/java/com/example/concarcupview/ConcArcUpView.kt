@@ -26,7 +26,7 @@ val backColor : Int = "#BDBDBD".toColorInt()
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
-fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n))
+fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
 
 fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
     save()
@@ -42,7 +42,7 @@ fun Canvas.drawConcArcUp(scale : Float, w : Float, h : Float, paint : Paint) {
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY(-size + size * j + (w / 2) * dsc(4), -h * 0.5f * dsc(3)) {
+            drawXY(-size + size * j + (w / 2) * dsc(4) * j, -h * 0.5f * dsc(3) * (1 - j)) {
                 rotate(-rot * (1 - j) * dsc(2))
                 drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(j), false, paint)
             }
