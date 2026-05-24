@@ -22,7 +22,7 @@ val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 5.9f
 val delay : Long = 20
-val backcolor : Int = "#BDBDBD".toColorInt()
+val backColor : Int = "#BDBDBD".toColorInt()
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
@@ -184,6 +184,29 @@ class ConcArcUpView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : ConcArcUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val cau : ConcArcUp = ConcArcUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            cau.draw(canvas, paint)
+            animator.animate {
+                cau.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            cau.startUpdating {
+                animator.start()
+            }
         }
     }
 }
