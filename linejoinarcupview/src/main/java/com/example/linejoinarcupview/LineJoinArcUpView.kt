@@ -181,8 +181,31 @@ class LineJoinArcUpView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUdpating(cb : () -> Unit) {
+        fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineJoinArcUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ljau : LineJoinArcUp = LineJoinArcUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ljau.draw(canvas, paint)
+            animator.animate {
+                ljau.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ljau.startUpdating {
+                animator.start()
+            }
         }
     }
 }
