@@ -210,4 +210,12 @@ class LineJoinArcUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineJoinArcUpView {
+            val view : LineJoinArcUpView = LineJoinArcUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
