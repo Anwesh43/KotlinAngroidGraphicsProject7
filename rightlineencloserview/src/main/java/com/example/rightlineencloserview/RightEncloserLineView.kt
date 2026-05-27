@@ -213,4 +213,12 @@ class RightEncloserLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RightEncloserLineView {
+            val view : RightEncloserLineView = RightEncloserLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
