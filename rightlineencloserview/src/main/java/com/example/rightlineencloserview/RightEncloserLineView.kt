@@ -49,6 +49,7 @@ fun Canvas.drawRightEncloserLine(scale : Float, w : Float, h : Float, paint : Pa
             }
         }
         drawLine(0f, 0f, 0f, -size * dsc(3), paint)
+        drawArc(RectF(-size / 4, -size, size / 4, 0f), 90f - 180f * dsc(3), 180f * dsc(3), false, paint)
     }
 }
 
