@@ -189,4 +189,27 @@ class BiCircleLineCreatorView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiCircleLineCreatorView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bclc : BiCircleLineCreator = BiCircleLineCreator(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bclc.draw(canvas, paint)
+            animator.animate {
+                bclc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bclc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
