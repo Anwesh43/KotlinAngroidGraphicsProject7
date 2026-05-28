@@ -214,4 +214,12 @@ class BiCircleLineCreatorView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiCircleLineCreatorView {
+            val view : BiCircleLineCreatorView = BiCircleLineCreatorView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
