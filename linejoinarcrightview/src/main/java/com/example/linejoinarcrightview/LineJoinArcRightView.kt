@@ -216,4 +216,12 @@ class LineJoinArcRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineJoinArcRightView {
+            val view : LineJoinArcRightView = LineJoinArcRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
