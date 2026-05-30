@@ -224,4 +224,12 @@ class BiLineBentArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : BiLineBentArcView {
+            val view : BiLineBentArcView = BiLineBentArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
