@@ -58,8 +58,7 @@ fun Canvas.drawBiLineBentArc(scale : Float, w : Float, h : Float, paint : Paint)
                 }
             }
         }
-        drawArc(RectF(-size / 2, -size / 2, size / 2, size / 2), 150f, bentDeg * dsc(4), false, paint)
-
+        drawArc(RectF(-size, -size, size, size), 270f - bentDeg, 2 * bentDeg * dsc(4), false, paint)
     }
 }
 
