@@ -189,4 +189,27 @@ class LineBentArcDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBentArcDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbad : LineBentArcDown = LineBentArcDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbad.draw(canvas, paint)
+            animator.animate {
+                lbad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbad.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
