@@ -52,7 +52,7 @@ fun Canvas.drawBiLinePerpLeft(scale : Float, w : Float, h : Float, paint : Paint
     drawXY(w / 2 - (w / 2) * dsc(5), h / 2) {
         for (j in 0..1) {
             val sf : Float = 1f - 2 * j
-            drawXY(0f, h * 0.5f * (1 - 2 * j) * sf) {
+            drawXY(0f, h * 0.5f * (1 - dsc(2 * j)) * sf) {
                 rotate(rot * dsc(2 * j + 1) * sf)
                 drawLine(0f, 0f, 0f, size * sf, paint)
             }
