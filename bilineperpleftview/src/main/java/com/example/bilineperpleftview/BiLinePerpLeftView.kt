@@ -221,4 +221,12 @@ class BiLinePerpLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiLinePerpLeftView {
+            val view : BiLinePerpLeftView = BiLinePerpLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
