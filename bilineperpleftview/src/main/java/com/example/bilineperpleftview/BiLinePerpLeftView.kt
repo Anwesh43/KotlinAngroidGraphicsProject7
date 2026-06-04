@@ -196,4 +196,27 @@ class BiLinePerpLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiLinePerpLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val blpl : BiLinePerpLeft = BiLinePerpLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            blpl.draw(canvas, paint)
+            animator.animate {
+                blpl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            blpl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
