@@ -49,14 +49,15 @@ fun Canvas.drawBiLinePerpLeft(scale : Float, w : Float, h : Float, paint : Paint
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2 - (w / 2) * dsc(5), h / 2) {
         for (j in 0..1) {
-            drawXY(0f, h * 0.5f * (1 - 2 * j) * (1 - dsc(2 * j))) {
-                rotate(rot * dsc(2 * j + 1))
-                drawLine(0f, 0f, 0f, size * (1f - 2 * j), paint)
+            val sf : Float = 1f - 2 * j
+            drawXY(0f, h * 0.5f * (1 - 2 * j) * sf) {
+                rotate(rot * dsc(2 * j + 1) * sf)
+                drawLine(0f, 0f, 0f, size * sf, paint)
             }
         }
-        drawArc(RectF(-size, -size, size, size), start, rot * 2, false, paint)
+        drawArc(RectF(-size, -size, size, size), start, rot * 2 * dsc(4), false, paint)
     }
 }
 
