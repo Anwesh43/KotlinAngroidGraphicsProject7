@@ -188,4 +188,27 @@ class LineEllipEncloserView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineEllipEncloserView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lee : LineEllipEncloser = LineEllipEncloser(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lee.draw(canvas, paint)
+            animator.animate {
+                lee.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lee.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
