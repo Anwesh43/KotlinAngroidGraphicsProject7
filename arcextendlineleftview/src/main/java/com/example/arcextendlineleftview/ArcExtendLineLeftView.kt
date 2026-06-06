@@ -184,4 +184,27 @@ class ArcExtendLineLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcExtendLineLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val aell : ArcExtendLineLeft = ArcExtendLineLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            aell.draw(canvas, paint)
+            animator.animate {
+                aell.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            aell.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
