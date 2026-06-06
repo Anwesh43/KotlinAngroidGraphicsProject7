@@ -146,7 +146,7 @@ class ArcExtendLineLeftView(ctx : Context) : View(ctx) {
         }
 
         fun startUpdating(cb : () -> Unit) {
-            state.update(cb)
+            state.startUpdating(cb)
         }
 
         fun getNext(dir : Int, cb : () -> Unit) : AELLNode {
