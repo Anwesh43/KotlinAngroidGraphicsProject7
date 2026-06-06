@@ -135,8 +135,10 @@ class ArcExtendLineLeftView(ctx : Context) : View(ctx) {
         }
 
         fun addNeighbor() {
-            next = AELLNode(i + 1)
-            next?.prev = this
+            if (i < colors.size - 1) {
+                next = AELLNode(i + 1)
+                next?.prev = this
+            }
         }
 
         fun draw(canvas : Canvas, paint : Paint) {
