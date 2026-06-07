@@ -190,4 +190,27 @@ class LineBreakArcEncloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineBreakArcEncloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lbae : LineBreakArcEnclose = LineBreakArcEnclose(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbae.draw(canvas, paint)
+            animator.animate {
+                lbae.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbae.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
