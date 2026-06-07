@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/arcbentlineleftview" />
             <option value="$PROJECT_DIR$/arcbentsizedownview" />
+            <option value="$PROJECT_DIR$/arcextendlineleftview" />
             <option value="$PROJECT_DIR$/arcjoinlinedownview" />
             <option value="$PROJECT_DIR$/arcjoinlineupview" />
             <option value="$PROJECT_DIR$/arclinedownrightview" />
@@ -82,6 +83,7 @@
             <option value="$PROJECT_DIR$/linediviiderotrightview" />
             <option value="$PROJECT_DIR$/linedownarcencloseview" />
             <option value="$PROJECT_DIR$/linedownperprightview" />
+            <option value="$PROJECT_DIR$/lineellipencloserview" />
             <option value="$PROJECT_DIR$/lineenclosequarterarcview" />
             <option value="$PROJECT_DIR$/lineextendarcdownview" />
             <option value="$PROJECT_DIR$/lineextendarcrotview" />
