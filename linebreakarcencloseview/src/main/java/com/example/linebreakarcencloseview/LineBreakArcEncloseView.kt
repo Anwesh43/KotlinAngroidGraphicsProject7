@@ -215,4 +215,12 @@ class LineBreakArcEncloseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineBreakArcEncloseView {
+            val view : LineBreakArcEncloseView = LineBreakArcEncloseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
