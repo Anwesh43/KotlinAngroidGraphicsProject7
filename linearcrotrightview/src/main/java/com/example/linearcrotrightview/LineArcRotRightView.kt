@@ -45,7 +45,7 @@ fun Canvas.drawLineArcRotRight(scale : Float, w : Float, h : Float, paint : Pain
         drawXY(0f, -size) {
             drawLine(0f, 0f, 0f, size * 0.5f * dsc(0), paint)
         }
-        drawArc(RectF(-size / 4, -size / 2, size / 4, 0f), -90f, 90f * dsc(1), false, paint)
+        drawArc(RectF(-size / 4, -size / 2, size / 4, 0f), -90f, 180f * dsc(1), false, paint)
     }
 }
 
