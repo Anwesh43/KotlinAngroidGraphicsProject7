@@ -212,4 +212,12 @@ class BiLineArcDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiLineArcDownView {
+            val view : BiLineArcDownView = BiLineArcDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
