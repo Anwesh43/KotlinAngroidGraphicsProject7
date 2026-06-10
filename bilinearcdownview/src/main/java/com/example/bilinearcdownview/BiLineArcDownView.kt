@@ -42,7 +42,7 @@ fun Canvas.drawBiLineArcDown(scale : Float, w : Float, h : Float, paint : Paint)
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY(-size + size * j, -h * 0.5f * ((1 - dsc(0)) + dsc(4))) {
+            drawXY(-size + size * j, -h * 0.5f * ((1 - dsc(0)) - dsc(4))) {
                 rotate(rot * dsc(2))
                 drawLine(0f, 0f, 0f, -size, paint)
                 drawArc(RectF(-size, -size, size, size), -90f, 90f * dsc(1), false, paint)
