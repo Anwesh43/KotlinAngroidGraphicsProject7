@@ -133,7 +133,7 @@ class RightLineArcEncloseView(ctx : Context) : View(ctx) {
         private var prev : RLAENode? = null
 
         init {
-
+            addNeighbor()
         }
 
         fun addNeighbor() {
