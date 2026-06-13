@@ -188,4 +188,27 @@ class RightLineArcEncloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightLineArcEncloseView) {
+
+        private var rlae : RightLineArcEnclose = RightLineArcEnclose(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            rlae.draw(canvas, paint)
+            animator.animate {
+                rlae.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            rlae.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
