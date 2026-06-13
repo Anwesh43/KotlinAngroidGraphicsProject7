@@ -213,4 +213,12 @@ class RightLineArcEncloseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : RightLineArcEncloseView {
+            val view : RightLineArcEncloseView = RightLineArcEncloseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
