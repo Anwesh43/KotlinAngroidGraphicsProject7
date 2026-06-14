@@ -217,4 +217,12 @@ class LineExtendArcDiagView(ctx : Context): View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineExtendArcDiagView {
+            val view : LineExtendArcDiagView = LineExtendArcDiagView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
