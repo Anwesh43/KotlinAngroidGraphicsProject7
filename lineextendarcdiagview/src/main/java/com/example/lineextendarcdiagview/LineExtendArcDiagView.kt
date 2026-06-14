@@ -17,7 +17,7 @@ val colors : Array<String> = arrayOf(
     "#00C853"
 )
 val parts : Int = 5
-val scGap : Float= 0.05f
+val scGap : Float= 0.05f / parts
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val sizeFactor : Float = 5.9f
@@ -43,14 +43,14 @@ fun Canvas.drawLineExtendArcDiag(scale : Float, w : Float, h : Float, paint : Pa
     drawXY(w / 2, h / 2 - (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
         drawXY(-size, 0f) {
-            drawLine(0f, 0f, -size * dsc(0), size * dsc(0), paint)
+            drawLine(0f, 0f, size * dsc(0), -size * dsc(0), paint)
         }
         drawXY(0f, -size) {
             drawLine(0f, 0f, 0f, size * dsc(1), paint)
         }
         for (j in 0..1) {
             drawXY(-size * 0.5f * j, 0f) {
-                drawArc(RectF(-size / 2, -size / 4, size / 4, 0f), 0f, 180f * dsc(2).divideScale(j, 2), false, paint)
+                drawArc(RectF(-size / 2, -size / 5, 0f, size / 5), 0f, 180f * dsc(2).divideScale(j, 2), false, paint)
             }
         }
     }
