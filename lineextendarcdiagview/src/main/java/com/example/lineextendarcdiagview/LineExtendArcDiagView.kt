@@ -192,4 +192,27 @@ class LineExtendArcDiagView(ctx : Context): View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineExtendArcDiagView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lead : LineExtendArcDiag = LineExtendArcDiag(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lead.draw(canvas, paint)
+            animator.animate {
+                lead.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lead.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
