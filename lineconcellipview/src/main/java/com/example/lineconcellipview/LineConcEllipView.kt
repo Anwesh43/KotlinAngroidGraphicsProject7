@@ -211,4 +211,13 @@ class LineConcEllipView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineConcEllipView {
+            val view : LineConcEllipView = LineConcEllipView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
