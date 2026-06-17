@@ -186,4 +186,27 @@ class LineConcEllipView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineConcEllipView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lce : LineConcEllip = LineConcEllip(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lce.draw(canvas, paint)
+            animator.animate {
+                lce.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lce.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
