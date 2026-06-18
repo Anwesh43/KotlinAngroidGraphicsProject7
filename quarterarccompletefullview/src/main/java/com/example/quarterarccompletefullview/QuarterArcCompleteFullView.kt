@@ -224,4 +224,12 @@ class QuarterArcCompleteFullView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : QuarterArcCompleteFullView {
+            val view : QuarterArcCompleteFullView = QuarterArcCompleteFullView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
