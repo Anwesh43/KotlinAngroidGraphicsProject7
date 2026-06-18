@@ -199,4 +199,27 @@ class QuarterArcCompleteFullView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : QuarterArcCompleteFullView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val qacf : QuarterArcCompleteFull = QuarterArcCompleteFull(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            qacf.draw(canvas, paint)
+            animator.animate {
+                qacf.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            qacf.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
