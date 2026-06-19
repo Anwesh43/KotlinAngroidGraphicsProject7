@@ -216,4 +216,12 @@ class ArcDivideCreateView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcDivideCreateView {
+            val view : ArcDivideCreateView = ArcDivideCreateView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
