@@ -191,4 +191,27 @@ class ArcDivideCreateView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcDivideCreateView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val adc : ArcDivideCreate = ArcDivideCreate(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            adc.draw(canvas, paint)
+            animator.animate {
+                adc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            adc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
