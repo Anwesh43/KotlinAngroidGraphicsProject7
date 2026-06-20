@@ -41,12 +41,12 @@ fun Canvas.drawArcPartLineDown(scale : Float, w : Float, h : Float, paint : Pain
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2, h / 2) {
+    drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         rotate(rot * dsc(3))
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 rotate(startDeg + rot * j)
-                drawLine(size * (1 - j) * (1 - dsc(2)), 0f, size * (j + (1 - j) * dsc(0)), 0f, paint)
+                drawLine(size * j * (1 - dsc(2)), 0f, size * (j + (1 - j) * dsc(0)), 0f, paint)
             }
         }
         drawArc(RectF(-size, -size, size, size), startDeg, rot * dsc(1), false, paint)
