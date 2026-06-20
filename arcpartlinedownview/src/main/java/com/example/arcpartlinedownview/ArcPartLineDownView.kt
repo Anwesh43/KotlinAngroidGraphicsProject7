@@ -214,4 +214,12 @@ class ArcPartLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) :ArcPartLineDownView {
+            val view : ArcPartLineDownView = ArcPartLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
