@@ -216,4 +216,12 @@ class ArcBoxCloseRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcBoxCloseRightView {
+            val view : ArcBoxCloseRightView = ArcBoxCloseRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
