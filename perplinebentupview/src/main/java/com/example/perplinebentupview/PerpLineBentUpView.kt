@@ -212,4 +212,11 @@ class PerpLineBentUpView(ctx : Context) : View(ctx) {
         }
     }
 
+    companion object {
+        fun create(activity: Activity) : PerpLineBentUpView {
+            val view : PerpLineBentUpView = PerpLineBentUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
