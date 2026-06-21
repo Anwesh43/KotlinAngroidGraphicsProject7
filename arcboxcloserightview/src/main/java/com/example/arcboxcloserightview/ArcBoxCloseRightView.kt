@@ -27,3 +27,40 @@ val rot : Float = 180f
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawArcBoxCloseRight(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc :(Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    drawXY(w / 2 + (w / 2) * dsc(5), h / 2) {
+        drawXY(0f, 0f) {
+            rotate(-rot * dsc(4))
+            drawArc(RectF(-size, -size / 2, 0f, size / 2), rot, rot * dsc(0), false, paint)
+        }
+        drawLine(0f, 0f, 0f, -size * dsc(1), paint)
+        drawXY(0f, -size) {
+            drawLine(0f, 0f, size * dsc(2), 0f, paint)
+            drawXY(size, -size) {
+                drawLine(0f, 0f, 0f, size * dsc(3), paint)
+            }
+        }
+    }
+}
+
+fun Canvas.drawABCRNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
+    drawArcBoxCloseRight(scale, w, h, paint)
+}
