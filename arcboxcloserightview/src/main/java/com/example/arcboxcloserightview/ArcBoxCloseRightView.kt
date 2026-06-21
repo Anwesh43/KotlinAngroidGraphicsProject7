@@ -191,4 +191,27 @@ class ArcBoxCloseRightView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcBoxCloseRightView) {
+
+        private val animator : Animator = Animator(view)
+        private val abcr : ArcBoxCloseRight = ArcBoxCloseRight(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            abcr.draw(canvas, paint)
+            animator.animate {
+                abcr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            abcr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
