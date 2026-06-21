@@ -187,5 +187,27 @@ class PerpLineBentUpView(ctx : Context) : View(ctx) {
         }
     }
 
+    data class Renderer(var view : PerpLineBentUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val plbu : PerpLineBentUp = PerpLineBentUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            plbu.draw(canvas, paint)
+            animator.animate {
+                plbu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            plbu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 
 }
