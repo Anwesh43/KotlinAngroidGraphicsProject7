@@ -48,7 +48,7 @@ fun Canvas.drawArcBoxCloseRight(scale : Float, w : Float, h : Float, paint : Pai
         drawLine(0f, 0f, 0f, -size * dsc(1), paint)
         drawXY(0f, -size) {
             drawLine(0f, 0f, size * dsc(2), 0f, paint)
-            drawXY(size, -size) {
+            drawXY(size, 0f) {
                 drawLine(0f, 0f, 0f, size * dsc(3), paint)
             }
         }
