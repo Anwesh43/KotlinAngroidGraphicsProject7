@@ -214,4 +214,12 @@ class StretchLineFullCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : StretchLineFullCircleView {
+            val view : StretchLineFullCircleView = StretchLineFullCircleView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
