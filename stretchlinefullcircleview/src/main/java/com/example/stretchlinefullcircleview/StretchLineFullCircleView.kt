@@ -42,12 +42,12 @@ fun Canvas.drawStretchLineFullCircle(scale : Float, w : Float, h : Float, paint 
     }
     drawXY(w / 2, h / 2 + (h / 2) * dsc(4)) {
         for (j in 0..1) {
+            rotate(rot * (1 - 2 * j) * (dsc(1) - dsc(3)))
             drawXY(0f, 0f) {
-                rotate(rot * (1 - 2 * j) * (dsc(1) - dsc(3)))
                 drawLine(0f, 0f, 0f, size * dsc(0), paint)
             }
             drawXY(-size + size * j, 0f) {
-                drawArc(RectF(-size, -size / 2, 0f, size / 2), 180f, 180f * dsc(2).divideScale(j, 2), false, paint)
+                drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(2).divideScale(j, 2), false, paint)
             }
         }
     }
