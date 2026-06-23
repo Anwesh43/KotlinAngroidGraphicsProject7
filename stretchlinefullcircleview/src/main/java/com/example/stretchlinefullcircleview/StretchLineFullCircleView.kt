@@ -189,4 +189,27 @@ class StretchLineFullCircleView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : StretchLineFullCircleView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val slfc : StretchLineFullCircle = StretchLineFullCircle(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            slfc.draw(canvas, paint)
+            animator.animate {
+                slfc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            slfc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
