@@ -124,4 +124,46 @@ class StretchLineFullCircleView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class SLFCNode(var i : Int) {
+
+        private var prev : SLFCNode? = null
+        private var next : SLFCNode? = null
+        private val state : State = State()
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = SLFCNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawSLFCNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : SLFCNode {
+            var curr : SLFCNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
