@@ -123,46 +123,69 @@ class RightLineUpLeftView(ctx : Context) : View(ctx) {
                 }
             }
         }
+    }
 
-        data class RLULNode(var i : Int = 0, val state : State = State()) {
+    data class RLULNode(var i : Int = 0, val state : State = State()) {
 
-            private var next : RLULNode? = null
-            private var prev : RLULNode? = null
+        private var next : RLULNode? = null
+        private var prev : RLULNode? = null
 
-            init {
-                addNeighbor()
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = RLULNode(i + 1)
+                next?.prev = this
             }
+        }
 
-            fun addNeighbor() {
-                if (i < colors.size - 1) {
-                    next = RLULNode(i + 1)
-                    next?.prev = this
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawRLULNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : RLULNode {
+            var curr : RLULNode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
+
+    data class RightLineUpLeft(var i : Int) {
+
+        private var curr : RLULNode = RLULNode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
                 }
+                cb(it)
             }
+        }
 
-            fun draw(canvas : Canvas, paint : Paint) {
-                canvas.drawRLULNode(i, state.scale, paint)
-            }
-
-            fun update(cb : (Float) -> Unit) {
-                state.update(cb)
-            }
-
-            fun startUpdating(cb : () -> Unit) {
-                state.startUpdating(cb)
-            }
-
-            fun getNext(dir : Int, cb : () -> Unit) : RLULNode {
-                var curr : RLULNode? = prev
-                if (dir === 1) {
-                    curr = next
-                }
-                if (curr != null) {
-                    return curr
-                }
-                cb()
-                return this
-            }
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
         }
     }
 }
