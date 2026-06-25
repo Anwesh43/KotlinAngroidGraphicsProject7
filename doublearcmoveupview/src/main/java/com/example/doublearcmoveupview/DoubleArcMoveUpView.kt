@@ -212,4 +212,12 @@ class DoubleArcMoveUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : DoubleArcMoveUpView {
+            val view : DoubleArcMoveUpView = DoubleArcMoveUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
