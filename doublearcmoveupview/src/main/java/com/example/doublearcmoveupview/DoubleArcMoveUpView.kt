@@ -187,4 +187,27 @@ class DoubleArcMoveUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : DoubleArcMoveUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val damu : DoubleArcMoveUp = DoubleArcMoveUp(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            damu.draw(canvas, paint)
+            animator.animate {
+                damu.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            damu.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
