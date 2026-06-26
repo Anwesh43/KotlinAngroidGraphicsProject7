@@ -185,4 +185,27 @@ class ArcJoinRotDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcJoinRotDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ajrd : ArcJoinRotDown = ArcJoinRotDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ajrd.draw(canvas, paint)
+            animator.animate {
+                ajrd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ajrd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
