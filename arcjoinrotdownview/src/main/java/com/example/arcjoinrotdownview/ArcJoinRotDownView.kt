@@ -210,4 +210,12 @@ class ArcJoinRotDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : ArcJoinRotDownView {
+            val view : ArcJoinRotDownView = ArcJoinRotDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
