@@ -45,7 +45,7 @@ fun Canvas.drawLineBentArcComplete(scale : Float, w : Float, h : Float, paint : 
         rotate(rot * dsc(2))
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(bentDeg * (1f - 2 * j))
+                rotate(-bentDeg * (1f - 2 * j))
                 drawLine(size * j * (1 - dsc(4)), 0f, size * (dsc(0) * (1 - j) + j), 0f, paint)
             }
         }
