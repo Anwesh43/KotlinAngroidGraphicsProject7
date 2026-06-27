@@ -16,8 +16,8 @@ val colors : Array<String> = arrayOf(
     "#C51162",
     "#00C853"
 )
-val parts : Int = 5
-val scGap : Float = 0.04f / parts
+val parts : Int = 6
+val scGap : Float = 0.05f / parts
 val rot : Float = 90f
 val bentDeg : Float = 45f
 val sizeFactor : Float = 5.9f
