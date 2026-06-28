@@ -185,4 +185,25 @@ class LineArcRotDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineArcRotDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lard : LineArcRotDown = LineArcRotDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lard.draw(canvas, paint)
+            animator.animate {
+                lard.update { animator.stop() }
+            }
+        }
+
+        fun handleTap() {
+            lard.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
