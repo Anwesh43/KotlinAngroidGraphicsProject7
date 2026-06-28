@@ -12,12 +12,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlinangroidgraphicsproject7.ui.theme.KotlinAngroidGraphicsProject7Theme
-import com.example.linebentarccompleteview.LineBentArcCompleteView
+import com.example.linearcrotdownview.LineArcRotDownView
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //LineRotPartialArcView.create(this)
-        LineBentArcCompleteView.create(this)
+        LineArcRotDownView.create(this)
     }
 }
