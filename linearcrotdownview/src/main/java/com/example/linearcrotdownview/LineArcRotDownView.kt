@@ -40,7 +40,7 @@ fun Canvas.drawLineArcRotDown(scale : Float, w : Float, h : Float, paint : Paint
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 - w * 0.25f * (1 - dsc(2)), h / 2 - h * 0.5f * ((1 - dsc(0)) + dsc(4))) {
+    drawXY(w / 2 - w * 0.25f * (1 - dsc(2)), h / 2 - h * 0.5f * ((1 - dsc(0)) - dsc(4))) {
         drawXY(0f, 0f) {
             rotate(rot * (dsc(1) + dsc(3)))
             drawLine(0f, 0f, 0f, -size, paint)
