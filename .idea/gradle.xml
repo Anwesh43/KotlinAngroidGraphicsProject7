@@ -75,6 +75,7 @@
             <option value="$PROJECT_DIR$/linearcjoinrotview" />
             <option value="$PROJECT_DIR$/linearclinerotview" />
             <option value="$PROJECT_DIR$/linearcrightrotview" />
+            <option value="$PROJECT_DIR$/linearcrotdownview" />
             <option value="$PROJECT_DIR$/linearcrotleftview" />
             <option value="$PROJECT_DIR$/linearcrotrightview" />
             <option value="$PROJECT_DIR$/linebentarccompleteview" />
@@ -142,6 +143,7 @@
             <option value="$PROJECT_DIR$/rightlineupleftview" />
             <option value="$PROJECT_DIR$/rotarccreatelineview" />
             <option value="$PROJECT_DIR$/rotarchalfupview" />
+            <option value="$PROJECT_DIR$/semiarcleftrotview" />
             <option value="$PROJECT_DIR$/semihalfarcleftview" />
             <option value="$PROJECT_DIR$/sidearccreateleftview" />
             <option value="$PROJECT_DIR$/sidelinearcdownview" />
