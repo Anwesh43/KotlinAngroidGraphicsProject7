@@ -45,7 +45,7 @@ fun Canvas.drawSemiArcLeftRot(scale : Float, w : Float, h : Float, paint : Paint
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
                 drawXY((-w * 0.25f) * (1 - dsc(2)), -h * 0.5f * (1 - dsc(1))) {
-                    rotate(rot * dsc(3))
+                    rotate(rot * dsc(3) * (1 - j))
                     drawArc(RectF(-size, -size / 2, 0f, size / 2), 0f, 180f * dsc(0), false, paint)
                 }
             }
