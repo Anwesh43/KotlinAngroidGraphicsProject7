@@ -189,4 +189,27 @@ class SemiArcLeftRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SemiArcLeftRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val salr : SemiArcLeftRot = SemiArcLeftRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            salr.draw(canvas, paint)
+            animator.animate {
+                salr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            salr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
