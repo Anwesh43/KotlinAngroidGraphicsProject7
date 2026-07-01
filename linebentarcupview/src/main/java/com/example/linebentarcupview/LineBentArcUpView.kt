@@ -64,14 +64,16 @@ fun Canvas.drawLBAUNode(i : Int, scale : Float, paint : Paint) {
 
 class LineBentArcUpView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    private val renderer : Renderer = Renderer(this)
 
+    override fun onDraw(canvas : Canvas) {
+        renderer.render(canvas)
     }
 
     override fun onTouchEvent(event : MotionEvent) : Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-
+                renderer.handleTap()
             }
         }
         return true
@@ -209,6 +211,15 @@ class LineBentArcUpView(ctx : Context) : View(ctx) {
             lbau.startUpdating {
                 animator.start()
             }
+        }
+    }
+
+    companion object {
+
+        fun create(activity: Activity) : LineBentArcUpView {
+            val view : LineBentArcUpView = LineBentArcUpView(activity)
+            activity.setContentView(view)
+            return view
         }
     }
 }
