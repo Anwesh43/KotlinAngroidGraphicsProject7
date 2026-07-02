@@ -70,6 +70,7 @@
             <option value="$PROJECT_DIR$/joinlinesemicircleview" />
             <option value="$PROJECT_DIR$/leftlineperprotview" />
             <option value="$PROJECT_DIR$/linearccloselineview" />
+            <option value="$PROJECT_DIR$/linearcdownrotview" />
             <option value="$PROJECT_DIR$/linearcdroprotview" />
             <option value="$PROJECT_DIR$/linearcjoinleftview" />
             <option value="$PROJECT_DIR$/linearcjoinrotview" />
@@ -84,6 +85,7 @@
             <option value="$PROJECT_DIR$/linebentarcjoinview" />
             <option value="$PROJECT_DIR$/linebentarcrightview" />
             <option value="$PROJECT_DIR$/linebentarcrotview" />
+            <option value="$PROJECT_DIR$/linebentarcupview" />
             <option value="$PROJECT_DIR$/linebentenclosearcview" />
             <option value="$PROJECT_DIR$/linebentrotdownview" />
             <option value="$PROJECT_DIR$/linebisectarcjoinview" />
