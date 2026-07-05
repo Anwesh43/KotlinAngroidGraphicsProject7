@@ -48,7 +48,7 @@ fun Canvas.drawLineDropExtendArc(scale : Float, w : Float, h : Float, paint : Pa
     }
 }
 
-fun Canvas.drawSALRNode(i : Int, scale : Float, paint : Paint) {
+fun Canvas.drawLDEANode(i : Int, scale : Float, paint : Paint) {
     val w : Float = width.toFloat()
     val h : Float = height.toFloat()
     paint.color = colors[i].toColorInt()
@@ -118,6 +118,47 @@ class LineDropExtendArcView(ctx : Context) : View(ctx) {
             if (animated) {
                 animated = false
             }
+        }
+    }
+
+    data class LDEANode(var i : Int = 0, val state : State = State()) {
+
+        private var next : LDEANode? = null
+        private var prev : LDEANode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = LDEANode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawLDEANode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : LDEANode {
+            var curr : LDEANode? = prev
+            if (dir === 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
         }
     }
 }
