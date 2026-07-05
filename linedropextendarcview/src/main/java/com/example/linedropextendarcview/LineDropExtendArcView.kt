@@ -209,4 +209,12 @@ class LineDropExtendArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineDropExtendArcView {
+            val view : LineDropExtendArcView = LineDropExtendArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
