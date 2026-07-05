@@ -184,4 +184,27 @@ class LineDropExtendArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineDropExtendArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val ldea : LineDropExtendArc = LineDropExtendArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ldea.draw(canvas, paint)
+            animator.animate {
+                ldea.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ldea.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
