@@ -212,4 +212,12 @@ class LineSweepDiagRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineSweepDiagRotView {
+            val view : LineSweepDiagRotView = LineSweepDiagRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
