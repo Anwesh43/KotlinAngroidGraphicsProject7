@@ -187,4 +187,27 @@ class LineSweepDiagRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineSweepDiagRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lsdr : LineSweepDiagRot = LineSweepDiagRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lsdr.draw(canvas, paint)
+            animator.animate {
+                lsdr.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lsdr.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
