@@ -211,4 +211,12 @@ class MultiDropRotLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : MultiDropRotLineView {
+            val view : MultiDropRotLineView = MultiDropRotLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
