@@ -22,7 +22,41 @@ val sizeFactor : Float = 10.9f
 val delay : Long = 20
 val backColor : Int = "#BDBDBD".toColorInt()
 val rot : Float = 180f
+val lines : Int = 5
 
 fun Int.inverse() : Float = 1f / this
 fun Float.maxScale(i : Int, n : Int) : Float = Math.max(0f, this - i * n.inverse())
 fun Float.divideScale(i : Int, n : Int) : Float = Math.min(n.inverse(), maxScale(i, n)) * n
+
+fun Canvas.drawXY(x : Float, y : Float, cb : () -> Unit) {
+    save()
+    translate(x, y)
+    cb()
+    restore()
+}
+
+fun Canvas.drawMultiDropRotLine(scale : Float, w : Float, h : Float, paint : Paint) {
+    val size : Float = Math.min(w, h) / sizeFactor
+    val dsc : (Int) -> Float = {
+        scale.divideScale(it, parts)
+    }
+    val gap : Float = (w - 2 * size) / lines
+    drawXY(gap, 0f) {
+        for (j in 0..(lines- 1)) {
+            drawXY(gap * j, (h * 0.5f) * (dsc(0).divideScale(j, lines) + dsc(2).divideScale(j, lines))) {
+                rotate(rot * dsc(1).divideScale(j, lines))
+                drawLine(0f, 0f, 0f, -size, paint)
+            }
+        }
+    }
+}
+
+fun Canvas.drawMDRLNode(i : Int, scale : Float, paint : Paint) {
+    val w : Float = width.toFloat()
+    val h : Float = height.toFloat()
+    paint.color = colors[i].toColorInt()
+    paint.strokeCap = Paint.Cap.ROUND
+    paint.strokeWidth = Math.min(w, h) / strokeFactor
+    paint.style = Paint.Style.STROKE
+    drawMultiDropRotLine(scale, w, h, paint)
+}
