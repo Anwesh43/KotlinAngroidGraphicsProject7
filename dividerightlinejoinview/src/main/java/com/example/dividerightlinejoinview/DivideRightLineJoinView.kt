@@ -47,7 +47,7 @@ fun Canvas.drawDivideRightLineJoin(scale : Float, w : Float, h : Float, paint : 
             drawXY(gap * j, 0f) {
                 drawLine(0f, 0f, gap * dsc(j).divideScale(0, 2), 0f, paint)
                 drawXY(gap, 0f) {
-                    drawLine(0f, 0f, 0f, -gap * j * dsc(j).divideScale(1, 2), paint)
+                    drawLine(0f, 0f, 0f, -gap * (j + 1) * dsc(j).divideScale(1, 2), paint)
                 }
             }
         }
