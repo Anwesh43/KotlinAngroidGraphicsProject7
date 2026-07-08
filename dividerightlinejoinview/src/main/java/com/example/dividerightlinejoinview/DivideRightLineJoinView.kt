@@ -191,4 +191,27 @@ class DivideRightLineJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : DivideRightLineJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val drlj : DivideRightLineJoin = DivideRightLineJoin(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            drlj.draw(canvas, paint)
+            animator.animate {
+                drlj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            drlj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
