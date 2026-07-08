@@ -216,4 +216,12 @@ class DivideRightLineJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : DivideRightLineJoinView {
+            val view : DivideRightLineJoinView = DivideRightLineJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
