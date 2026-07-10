@@ -53,11 +53,13 @@
             <option value="$PROJECT_DIR$/breaklinearcdownview" />
             <option value="$PROJECT_DIR$/breaklinerotupview" />
             <option value="$PROJECT_DIR$/closearclineupview" />
+            <option value="$PROJECT_DIR$/concarcdownview" />
             <option value="$PROJECT_DIR$/concarcrotjoinview" />
             <option value="$PROJECT_DIR$/concarcsemiseparateview" />
             <option value="$PROJECT_DIR$/concarcupview" />
             <option value="$PROJECT_DIR$/concrotsiderightview" />
             <option value="$PROJECT_DIR$/dividearcrotcircleview" />
+            <option value="$PROJECT_DIR$/dividerightlinejoinview" />
             <option value="$PROJECT_DIR$/doublearcmoveupview" />
             <option value="$PROJECT_DIR$/downlinerightarcview" />
             <option value="$PROJECT_DIR$/endtomidarclineview" />
@@ -126,6 +128,7 @@
             <option value="$PROJECT_DIR$/lineupbiarcview" />
             <option value="$PROJECT_DIR$/midarchalflineview" />
             <option value="$PROJECT_DIR$/mirrorintosemicircleview" />
+            <option value="$PROJECT_DIR$/multidroprotlineview" />
             <option value="$PROJECT_DIR$/parallellinejoinarcview" />
             <option value="$PROJECT_DIR$/parallellinejoindownview" />
             <option value="$PROJECT_DIR$/parallellinesemicircleview" />
