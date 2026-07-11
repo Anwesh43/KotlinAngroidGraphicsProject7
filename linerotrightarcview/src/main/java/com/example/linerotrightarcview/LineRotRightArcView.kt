@@ -43,9 +43,9 @@ fun Canvas.drawLineRotRightArc(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(rot * dsc(3))
+                rotate(rot * dsc(3).divideScale(0, 2))
                 drawXY(0f, 0f) {
-                    rotate(rot * dsc(1))
+                    rotate(rot * (dsc(1) + dsc(3) * (1 - j) * dsc(3).divideScale(1, 2)))
                     drawLine(0f, 0f, 0f, -size * dsc(0), paint)
                 }
                 drawArc(RectF(-size, -size, size, size), 180f * j, rot * dsc(2), false, paint)
@@ -62,4 +62,20 @@ fun Canvas.drawLRRANode(i : Int, scale : Float, paint : Paint) {
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.style = Paint.Style.STROKE
     drawLineRotRightArc(scale, w, h, paint)
+}
+
+class LineRotRightArcView(ctx : Context) : View(ctx) {
+
+    override fun onDraw(canvas : Canvas) {
+
+    }
+
+    override fun onTouchEvent(event : MotionEvent) : Boolean {
+        when (event.action) {
+            MotionEvent.ACTION_DOWN -> {
+
+            }
+        }
+        return true
+    }
 }
