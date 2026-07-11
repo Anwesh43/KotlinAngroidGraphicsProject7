@@ -43,10 +43,10 @@ fun Canvas.drawLineRotRightArc(scale : Float, w : Float, h : Float, paint : Pain
     drawXY(w / 2 - (w / 2) * dsc(4), h / 2) {
         for (j in 0..1) {
             drawXY(0f, 0f) {
-                rotate(rot * dsc(3).divideScale(0, 2))
+                rotate(rot * dsc(3).divideScale(0, 2) * (1 - j))
                 drawXY(0f, 0f) {
                     rotate(rot * (dsc(1) + dsc(3) * (1 - j) * dsc(3).divideScale(1, 2)))
-                    drawLine(0f, 0f, 0f, -size * dsc(0), paint)
+                    drawLine(0f, 0f, 0f, -size * dsc(0) * (1 - 2 * j), paint)
                 }
                 drawArc(RectF(-size, -size, size, size), 180f * j, rot * dsc(2), false, paint)
             }
