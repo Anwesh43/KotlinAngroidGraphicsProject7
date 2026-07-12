@@ -188,4 +188,27 @@ class BentEitherSideDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BentEitherSideDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val besd : BentEitherSideDown = BentEitherSideDown(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            besd.draw(canvas, paint)
+            animator.animate {
+                besd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            besd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
