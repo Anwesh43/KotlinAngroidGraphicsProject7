@@ -213,4 +213,12 @@ class BentEitherSideDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BentEitherSideDownView {
+            val view : BentEitherSideDownView = BentEitherSideDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
