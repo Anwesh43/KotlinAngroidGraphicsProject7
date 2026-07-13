@@ -167,4 +167,27 @@ class LineRotPerpArcView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class LineRotPerpArc(var i : Int) {
+
+        private var curr : LRPANode = LRPANode(0)
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            curr.draw(canvas, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            curr.update {
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(it)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
 }
