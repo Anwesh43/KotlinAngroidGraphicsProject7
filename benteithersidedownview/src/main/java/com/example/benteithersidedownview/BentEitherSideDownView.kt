@@ -44,7 +44,7 @@ fun Canvas.drawBentEitherSideDown(scale : Float, w : Float, h : Float, paint : P
         for (j in 0..1) {
             drawXY(0f, 0f) {
                 scale(1f - 2 * j, 1f)
-                drawXY((w / 2) * (1 - dsc(1)), -size) {
+                drawXY(size + (w / 2 - size) * (1 - dsc(1)), -size) {
                     drawLine(0f, 0f, -size * dsc(0), size * dsc(0), paint)
                 }
             }
