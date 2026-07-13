@@ -215,4 +215,13 @@ class LineRotPerpArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : LineRotPerpArcView {
+            val view : LineRotPerpArcView = LineRotPerpArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
