@@ -211,4 +211,12 @@ class LineBentDropRightView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBentDropRightView {
+            val view : LineBentDropRightView = LineBentDropRightView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
