@@ -43,7 +43,7 @@ fun Canvas.drawLineBentDropRight(scale : Float, w : Float, h : Float, paint : Pa
     val size : Float = Math.min(w, h) / sizeFactor
     drawXY(w / 2, h / 2 + (h / 2) * dsc(5)) {
         drawXY(-w * 0.5f * (1 - dsc(1)), -size * (1 - dsc(3))) {
-            rotate(bentDeg * (1 - dsc(2)) + rot * dsc(4))
+            rotate(bentDeg * (1 + dsc(2)) + rot * dsc(4))
             drawLine(0f, 0f, 0f, -size * dsc(0), paint)
         }
         drawArc(RectF(-size, -size, size, size), 0f, rot * dsc(4), false, paint)
