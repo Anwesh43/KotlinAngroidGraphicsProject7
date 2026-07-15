@@ -218,4 +218,12 @@ class BiArcEncloserLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiArcEncloserLineView {
+            val view : BiArcEncloserLineView = BiArcEncloserLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
