@@ -193,4 +193,27 @@ class BiArcEncloserLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiArcEncloserLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bael : BiArcEncloserLine = BiArcEncloserLine(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bael.draw(canvas, paint)
+            animator.animate {
+                bael.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bael.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
