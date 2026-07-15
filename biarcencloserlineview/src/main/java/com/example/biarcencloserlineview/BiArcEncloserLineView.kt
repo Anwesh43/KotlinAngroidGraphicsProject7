@@ -43,7 +43,7 @@ fun Canvas.drawBiArcEncloserLine(scale : Float, w : Float, h : Float, paint : Pa
     }
     drawXY(w / 2, h / 2) {
         for (j in 0..1) {
-            drawXY(w * 0.5f * (1 - dsc(4)), 0f) {
+            drawXY(-w * 0.5f * dsc(4) * (1f - 2 * j), 0f) {
                 drawXY(size * j, 0f) {
                     drawArc(RectF(-size, -size / 2, 0f, size / 2), sweep, sweep * dsc(j * 3), false, paint)
                 }
