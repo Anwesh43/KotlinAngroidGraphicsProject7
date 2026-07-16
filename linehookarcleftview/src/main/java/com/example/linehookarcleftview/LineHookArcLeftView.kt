@@ -211,4 +211,12 @@ class LineHookArcLeftView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineHookArcLeftView {
+            val view : LineHookArcLeftView = LineHookArcLeftView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
