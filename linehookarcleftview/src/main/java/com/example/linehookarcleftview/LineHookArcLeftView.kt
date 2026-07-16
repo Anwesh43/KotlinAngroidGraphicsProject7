@@ -186,4 +186,27 @@ class LineHookArcLeftView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineHookArcLeftView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lhal : LineHookArcLeft = LineHookArcLeft(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lhal.draw(canvas, paint)
+            animator.animate {
+                lhal.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lhal.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
