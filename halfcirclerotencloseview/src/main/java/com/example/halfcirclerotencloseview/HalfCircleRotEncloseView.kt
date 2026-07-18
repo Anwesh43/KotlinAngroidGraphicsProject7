@@ -189,4 +189,27 @@ class HalfCircleRotEncloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : HalfCircleRotEncloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val hcre : HalfCircleRotEnclose = HalfCircleRotEnclose(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            hcre.draw(canvas, paint)
+            animator.animate {
+                hcre.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            hcre.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
