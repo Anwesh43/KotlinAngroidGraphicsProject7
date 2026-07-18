@@ -214,4 +214,12 @@ class HalfCircleRotEncloseView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity): HalfCircleRotEncloseView{
+            val view : HalfCircleRotEncloseView = HalfCircleRotEncloseView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
