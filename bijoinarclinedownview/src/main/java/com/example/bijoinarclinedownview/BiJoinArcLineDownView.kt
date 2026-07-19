@@ -212,4 +212,12 @@ class BiJoinArcLineDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : BiJoinArcLineDownView {
+            val view : BiJoinArcLineDownView = BiJoinArcLineDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
