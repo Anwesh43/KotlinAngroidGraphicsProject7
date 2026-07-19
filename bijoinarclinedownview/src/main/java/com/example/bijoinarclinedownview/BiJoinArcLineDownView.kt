@@ -187,4 +187,27 @@ class BiJoinArcLineDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiJoinArcLineDownView) {
+
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val bjlad : BiJoinArcLineDown = BiJoinArcLineDown(0)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bjlad.draw(canvas, paint)
+            animator.animate {
+                bjlad.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bjlad.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
