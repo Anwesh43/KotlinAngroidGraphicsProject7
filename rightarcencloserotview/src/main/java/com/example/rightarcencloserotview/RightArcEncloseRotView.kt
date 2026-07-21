@@ -189,4 +189,27 @@ class RightArcEncloseRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : RightArcEncloseRotView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val raer : RightArcEncloseRot = RightArcEncloseRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            raer.draw(canvas, paint)
+            animator.animate {
+                raer.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            raer.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
