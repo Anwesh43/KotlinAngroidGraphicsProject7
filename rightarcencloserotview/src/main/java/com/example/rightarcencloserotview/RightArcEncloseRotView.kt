@@ -214,4 +214,12 @@ class RightArcEncloseRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : RightArcEncloseRotView {
+            val view : RightArcEncloseRotView = RightArcEncloseRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
