@@ -187,4 +187,27 @@ class LineRotArcCloseView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineRotArcCloseView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lrac : LineRotArcClose = LineRotArcClose(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lrac.draw(canvas, paint)
+            animator.animate {
+                lrac.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lrac.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
