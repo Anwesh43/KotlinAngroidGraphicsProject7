@@ -189,4 +189,27 @@ class LinePartBentRotView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LinePartBentRotView) {
+
+        private val animator : Animator= Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lpra : LinePartBentRot = LinePartBentRot(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lpra.draw(canvas, paint)
+            animator.animate {
+                lpra.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lpra.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
