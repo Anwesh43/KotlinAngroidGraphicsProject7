@@ -214,4 +214,12 @@ class LinePartBentRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LinePartBentRotView {
+            val view : LinePartBentRotView = LinePartBentRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
