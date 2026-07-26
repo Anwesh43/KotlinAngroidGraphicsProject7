@@ -200,7 +200,7 @@ class ArcSweepRotUpView(ctx : Context) : View(ctx) {
 
         private val animator : Animator = Animator(view)
         private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        private val asru : ASRUNode = ASRUNode(0)
+        private val asru : ArcSweepRotUp = ArcSweepRotUp(0)
 
         fun render(canvas : Canvas) {
             canvas.drawColor(backColor)
