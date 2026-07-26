@@ -218,4 +218,12 @@ class ArcSweepRotUpView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : ArcSweepRotUpView {
+            val view : ArcSweepRotUpView = ArcSweepRotUpView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
