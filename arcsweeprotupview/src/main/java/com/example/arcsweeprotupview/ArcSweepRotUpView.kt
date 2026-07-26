@@ -193,4 +193,27 @@ class ArcSweepRotUpView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ArcSweepRotUpView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val asru : ASRUNode = ASRUNode(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            asru.draw(canvas, paint)
+            animator.animate {
+                asru.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            asru.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
