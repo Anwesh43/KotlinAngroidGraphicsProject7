@@ -26,6 +26,7 @@
             <option value="$PROJECT_DIR$/arcquarterhalfdownview" />
             <option value="$PROJECT_DIR$/arcrotateleftlineview" />
             <option value="$PROJECT_DIR$/arcsqextendownview" />
+            <option value="$PROJECT_DIR$/arcsweeprotupview" />
             <option value="$PROJECT_DIR$/arcupjoinrightview" />
             <option value="$PROJECT_DIR$/benteithersidedownview" />
             <option value="$PROJECT_DIR$/bentlinearcrightview" />
@@ -98,6 +99,7 @@
             <option value="$PROJECT_DIR$/linebentrotdownview" />
             <option value="$PROJECT_DIR$/linebisectarcjoinview" />
             <option value="$PROJECT_DIR$/linebreakarcencloseview" />
+            <option value="$PROJECT_DIR$/linebreakrotarcview" />
             <option value="$PROJECT_DIR$/linecapquarterarcview" />
             <option value="$PROJECT_DIR$/linecatcharcleftview" />
             <option value="$PROJECT_DIR$/lineconcellipview" />
