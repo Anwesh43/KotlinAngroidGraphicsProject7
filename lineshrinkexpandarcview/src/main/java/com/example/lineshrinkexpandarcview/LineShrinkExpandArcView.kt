@@ -185,4 +185,27 @@ class LineShrinkExpandArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineShrinkExpandArcView) {
+
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        private val lser : LineShrinkExpandArc = LineShrinkExpandArc(0)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lser.draw(canvas, paint)
+            animator.animate {
+                lser.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lser.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
