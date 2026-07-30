@@ -210,4 +210,12 @@ class LineShrinkExpandArcView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity: Activity) : LineShrinkExpandArcView {
+            val view : LineShrinkExpandArcView = LineShrinkExpandArcView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
