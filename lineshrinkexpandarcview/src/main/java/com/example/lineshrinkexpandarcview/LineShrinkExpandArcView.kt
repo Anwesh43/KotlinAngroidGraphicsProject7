@@ -40,12 +40,12 @@ fun Canvas.drawLineShrinkExpandArc(scale : Float, w : Float, h : Float, paint : 
     val dsc : (Int) -> Float = {
         scale.divideScale(it, parts)
     }
-    drawXY(w / 2 + (w / 2) * dsc(5), h / 2) {
+    drawXY(w / 2 + (w / 2) * dsc(4), h / 2) {
         drawXY(0f, 0f) {
             rotate(rot * dsc(2))
             drawLine(0f, 0f, 0f, size * (dsc(1) - dsc(3)), paint)
         }
-        drawArc(RectF(-size, -size / 2, 0f, size / 2), -90f + 180f * dsc(1), 180f * (dsc(0) - dsc(1)), false, paint)
+        drawArc(RectF(-size / 2, -size, size / 2, 0f), -90f + 180f * dsc(1), 180f * (dsc(0) - dsc(1)), false, paint)
         drawArc(RectF(0f, -size / 2, size, size / 2), 180f, 180f * dsc(3), false, paint)
     }
 }
@@ -83,6 +83,7 @@ class LineShrinkExpandArcView(ctx : Context) : View(ctx) {
             scale += scGap * dir
             if (Math.abs(scale - prevScale) > 1) {
                 scale = prevScale + dir
+                dir = 0f
                 prevScale = scale
                 cb(prevScale)
             }
