@@ -183,4 +183,27 @@ class LineEncloseRightArcView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : LineEncloseRightArcView) {
+
+        private val lera : LineEncloseRightArc = LineEncloseRightArc(0)
+        private val paint : Paint= Paint(Paint.ANTI_ALIAS_FLAG)
+        private val animator : Animator = Animator(view)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lera.draw(canvas, paint)
+            animator.animate {
+                lera.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lera.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
