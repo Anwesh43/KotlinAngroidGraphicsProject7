@@ -103,6 +103,7 @@
             <option value="$PROJECT_DIR$/linecapquarterarcview" />
             <option value="$PROJECT_DIR$/linecatcharcleftview" />
             <option value="$PROJECT_DIR$/lineconcellipview" />
+            <option value="$PROJECT_DIR$/lineconcjoinarcview" />
             <option value="$PROJECT_DIR$/linediviiderotrightview" />
             <option value="$PROJECT_DIR$/linedownarcencloseview" />
             <option value="$PROJECT_DIR$/linedownarcrotview" />
@@ -110,6 +111,7 @@
             <option value="$PROJECT_DIR$/linedropextendarcview" />
             <option value="$PROJECT_DIR$/lineellipencloserview" />
             <option value="$PROJECT_DIR$/lineenclosequarterarcview" />
+            <option value="$PROJECT_DIR$/lineencloserightarcview" />
             <option value="$PROJECT_DIR$/lineextendarcdiagview" />
             <option value="$PROJECT_DIR$/lineextendarcdownview" />
             <option value="$PROJECT_DIR$/lineextendarcrotview" />
