@@ -48,8 +48,10 @@ fun Canvas.drawLineConcArcJoin(scale : Float, w : Float, h : Float, paint : Pain
             drawLine(0f, -size * (1 - dsc(1)), 0f, -size, paint)
         }
         for (j in 0..1) {
-            val r : Float = -size / 2 + size * 0.5f * j
-            drawArc(RectF(-r, -r, r, r), -rot, rot * dsc(0).divideScale(j, 2), false, paint)
+            drawXY(0f, 0f) {
+                val r: Float = size / 2 + size * 0.5f * j
+                drawArc(RectF(-r, -r, r, r), -rot, bentDeg * dsc(0).divideScale(j, 2), false, paint)
+            }
         }
         drawLine(0f, 0f, 0f, -size * dsc(2), paint)
     }
