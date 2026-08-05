@@ -216,4 +216,12 @@ class LineConcArcJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineConcArcJoinView {
+            val view : LineConcArcJoinView = LineConcArcJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
